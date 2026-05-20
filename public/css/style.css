@@ -924,10 +924,14 @@ input, textarea { font-family: inherit; }
 .footer__bottom {
   border-top: 1px solid var(--white-10);
   padding: 20px 0;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 0.82rem;
   color: var(--white-60);
 }
+.footer__admin-link { color: rgba(255,255,255,0.15); transition: 0.3s; display: flex; align-items: center; }
+.footer__admin-link:hover { color: var(--bio-sprout); }
 
 /* ============================================
    RESPONSIVE

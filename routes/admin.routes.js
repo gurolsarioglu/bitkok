@@ -17,5 +17,6 @@ router.get('/edit/:section', requireAuth, adminCtrl.editSection);
 router.post('/api/section/:section', requireAuth, express.json(), adminCtrl.updateSection);
 router.post('/api/save', requireAuth, express.json(), adminCtrl.saveAll);
 router.post('/api/upload/:category', requireAuth, upload.single('image'), adminCtrl.uploadImage);
+router.post('/api/change-password', requireAuth, express.json(), adminCtrl.changePassword);
 
 module.exports = router;

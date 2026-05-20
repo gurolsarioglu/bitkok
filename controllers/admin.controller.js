@@ -4,23 +4,90 @@ const fs = require('fs');
 const path = require('path');
 const config = require('../config/config');
 
+/* =============================================
+   BRUTE-FORCE KORUMASI
+   ============================================= */
+const loginAttempts = new Map(); // IP -> { count, lastAttempt }
+const MAX_ATTEMPTS = 5;
+const LOCKOUT_MINUTES = 15;
+
+function checkLoginLimit(ip) {
+  const record = loginAttempts.get(ip);
+  if (!record) return { allowed: true };
+  
+  const elapsed = (Date.now() - record.lastAttempt) / 1000 / 60;
+  if (elapsed > LOCKOUT_MINUTES) {
+    loginAttempts.delete(ip);
+    return { allowed: true };
+  }
+  if (record.count >= MAX_ATTEMPTS) {
+    const remaining = Math.ceil(LOCKOUT_MINUTES - elapsed);
+    return { allowed: false, remaining };
+  }
+  return { allowed: true };
+}
+
+function recordFailedLogin(ip) {
+  const record = loginAttempts.get(ip) || { count: 0, lastAttempt: 0 };
+  record.count++;
+  record.lastAttempt = Date.now();
+  loginAttempts.set(ip, record);
+}
+
+function clearLoginAttempts(ip) {
+  loginAttempts.delete(ip);
+}
+
+/* =============================================
+   AUTH ENDPOINTS
+   ============================================= */
+
 /** Login sayfası */
 exports.loginPage = (req, res) => {
   if (req.session && req.session.admin) return res.redirect('/admin');
-  res.render('admin/login', { error: null });
+  res.render('admin/login', { error: null, info: null });
 };
 
 /** Login işlemi */
 exports.login = (req, res) => {
+  const ip = req.ip || req.connection.remoteAddress;
+  
+  // Rate limiting kontrolü
+  const limit = checkLoginLimit(ip);
+  if (!limit.allowed) {
+    return res.render('admin/login', { 
+      error: `Çok fazla başarısız giriş denemesi. ${limit.remaining} dakika sonra tekrar deneyin.`,
+      info: null
+    });
+  }
+
   const { username, password } = req.body;
   const usersData = JSON.parse(fs.readFileSync(config.data.usersPath, 'utf-8'));
   const user = usersData.admin.find(u => u.username === username);
 
   if (user && bcrypt.compareSync(password, user.password)) {
-    req.session.admin = { username: user.username, role: user.role };
-    return res.redirect('/admin');
+    clearLoginAttempts(ip);
+    
+    // Session regenerate - session fixation koruması
+    req.session.regenerate((err) => {
+      req.session.admin = { username: user.username, role: user.role };
+      req.session.loginTime = new Date().toISOString();
+      req.session.save(() => {
+        res.redirect('/admin');
+      });
+    });
+    return;
   }
-  res.render('admin/login', { error: 'Kullanıcı adı veya şifre hatalı' });
+
+  recordFailedLogin(ip);
+  const attemptsLeft = MAX_ATTEMPTS - (loginAttempts.get(ip)?.count || 0);
+  
+  res.render('admin/login', { 
+    error: attemptsLeft > 0 
+      ? `Kullanıcı adı veya şifre hatalı. ${attemptsLeft} deneme hakkınız kaldı.`
+      : `Hesabınız ${LOCKOUT_MINUTES} dakika süreyle kilitlendi.`,
+    info: null
+  });
 };
 
 /** Çıkış */
@@ -28,6 +95,10 @@ exports.logout = (req, res) => {
   req.session.destroy();
   res.redirect('/admin/login');
 };
+
+/* =============================================
+   DASHBOARD & EDIT
+   ============================================= */
 
 /** Dashboard */
 exports.dashboard = (req, res) => {
@@ -39,7 +110,7 @@ exports.dashboard = (req, res) => {
 exports.editSection = (req, res) => {
   const { section } = req.params;
   const content = contentModel.getAll();
-  const validSections = ['hero', 'solutions', 'story', 'research', 'blog', 'contact', 'settings', 'navbar', 'footer', 'design'];
+  const validSections = ['hero', 'solutions', 'story', 'research', 'blog', 'contact', 'settings', 'navbar', 'footer', 'design', 'security'];
   if (!validSections.includes(section)) return res.redirect('/admin');
   res.render('admin/dashboard', { content, section, admin: req.session.admin });
 };
@@ -73,5 +144,48 @@ exports.saveAll = (req, res) => {
     res.json({ success: true, data: updated });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
+  }
+};
+
+/* =============================================
+   ŞİFRE YÖNETİMİ
+   ============================================= */
+
+/** Şifre değiştirme */
+exports.changePassword = (req, res) => {
+  const { currentPassword, newPassword, confirmPassword } = req.body;
+  
+  // Validasyonlar
+  if (!currentPassword || !newPassword || !confirmPassword) {
+    return res.json({ success: false, error: 'Tüm alanları doldurun.' });
+  }
+  if (newPassword.length < 6) {
+    return res.json({ success: false, error: 'Yeni şifre en az 6 karakter olmalı.' });
+  }
+  if (newPassword !== confirmPassword) {
+    return res.json({ success: false, error: 'Yeni şifreler eşleşmiyor.' });
+  }
+
+  try {
+    const usersData = JSON.parse(fs.readFileSync(config.data.usersPath, 'utf-8'));
+    const userIndex = usersData.admin.findIndex(u => u.username === req.session.admin.username);
+    
+    if (userIndex === -1) {
+      return res.json({ success: false, error: 'Kullanıcı bulunamadı.' });
+    }
+
+    // Mevcut şifre kontrolü
+    if (!bcrypt.compareSync(currentPassword, usersData.admin[userIndex].password)) {
+      return res.json({ success: false, error: 'Mevcut şifre hatalı.' });
+    }
+
+    // Yeni şifreyi hashle ve kaydet
+    usersData.admin[userIndex].password = bcrypt.hashSync(newPassword, 10);
+    usersData.admin[userIndex].lastPasswordChange = new Date().toISOString();
+    fs.writeFileSync(config.data.usersPath, JSON.stringify(usersData, null, 2), 'utf-8');
+
+    res.json({ success: true });
+  } catch (err) {
+    res.json({ success: false, error: 'Şifre değiştirilemedi: ' + err.message });
   }
 };

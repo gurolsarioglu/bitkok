@@ -215,4 +215,68 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+
+  // --- Password Change Form ---
+  const pwdForm = document.getElementById('changePasswordForm');
+  if (pwdForm) {
+    // Password strength indicator
+    const newPwd = document.getElementById('newPassword');
+    const strengthEl = document.getElementById('passwordStrength');
+    if (newPwd && strengthEl) {
+      newPwd.addEventListener('input', () => {
+        const val = newPwd.value;
+        let score = 0;
+        if (val.length >= 6) score++;
+        if (val.length >= 10) score++;
+        if (/[A-Z]/.test(val)) score++;
+        if (/[0-9]/.test(val)) score++;
+        if (/[^A-Za-z0-9]/.test(val)) score++;
+        
+        const labels = ['', 'Zayıf', 'Orta', 'İyi', 'Güçlü', 'Çok Güçlü'];
+        const colors = ['', '#e74c3c', '#f39c12', '#f1c40f', '#2ecc71', '#27ae60'];
+        const pct = (score / 5) * 100;
+        
+        strengthEl.innerHTML = val.length > 0 ? `
+          <div style="height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden">
+            <div style="height:100%;width:${pct}%;background:${colors[score]};transition:0.3s;border-radius:2px"></div>
+          </div>
+          <div style="font-size:0.75rem;color:${colors[score]};margin-top:4px">${labels[score]}</div>
+        ` : '';
+      });
+    }
+
+    pwdForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const currentPassword = document.getElementById('currentPassword').value;
+      const newPassword = document.getElementById('newPassword').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (newPassword !== confirmPassword) {
+        showToast('Yeni şifreler eşleşmiyor!', 'error');
+        return;
+      }
+      if (newPassword.length < 6) {
+        showToast('Şifre en az 6 karakter olmalı!', 'error');
+        return;
+      }
+
+      try {
+        const res = await fetch('/admin/api/change-password', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ currentPassword, newPassword, confirmPassword })
+        });
+        const result = await res.json();
+        if (result.success) {
+          showToast('✓ Şifre başarıyla güncellendi!', 'success');
+          pwdForm.reset();
+          if (strengthEl) strengthEl.innerHTML = '';
+        } else {
+          showToast(result.error || 'Şifre değiştirilemedi', 'error');
+        }
+      } catch (err) {
+        showToast('Bağlantı hatası!', 'error');
+      }
+    });
+  }
 });
