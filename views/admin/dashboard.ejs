@@ -10,12 +10,16 @@
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar__header">
-      <svg viewBox="0 0 40 40" fill="none" width="32" height="32">
-        <path d="M20 4C16 4 12 8 12 14c0 4 1 8 4 11 1.5 1.5 3 2.5 4 3v4" stroke="#83C5BE" stroke-width="2" fill="none"/>
-        <path d="M14 10c-2 2-3 5-3 8 0 3 1 6 3 8" stroke="#4F6D7A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <circle cx="24" cy="10" r="1.5" fill="#83C5BE"/><circle cx="27" cy="14" r="1.5" fill="#83C5BE"/>
-        <path d="M20 14h6M20 18h8" stroke="#1B263B" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
+      <% if (content.settings.logo) { %>
+        <img src="<%= content.settings.logo %>" alt="Bitkok" style="width:32px;height:32px;object-fit:contain;border-radius:6px;">
+      <% } else { %>
+        <svg viewBox="0 0 40 40" fill="none" width="32" height="32">
+          <path d="M20 4C16 4 12 8 12 14c0 4 1 8 4 11 1.5 1.5 3 2.5 4 3v4" stroke="#83C5BE" stroke-width="2" fill="none"/>
+          <path d="M14 10c-2 2-3 5-3 8 0 3 1 6 3 8" stroke="#4F6D7A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <circle cx="24" cy="10" r="1.5" fill="#83C5BE"/><circle cx="27" cy="14" r="1.5" fill="#83C5BE"/>
+          <path d="M20 14h6M20 18h8" stroke="#1B263B" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      <% } %>
       <span>Bitkok Admin</span>
     </div>
     <nav class="sidebar__nav">
