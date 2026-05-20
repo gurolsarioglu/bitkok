@@ -1,0 +1,149 @@
+{
+  "settings": {
+    "siteName": "bitkok",
+    "siteDomain": ".com",
+    "siteTagline": "Tech-Agriculture Solutions",
+    "logo": "",
+    "metaDescription": "Bitkok - Gelenek ve inovasyon tarımda buluşuyor. Organik tarımı uzman IT çözümleriyle güçlendiriyoruz.",
+    "socialMedia": {
+      "linkedin": "#",
+      "instagram": "#",
+      "twitter": "#"
+    }
+  },
+  "navbar": {
+    "links": [
+      { "label": "Çözümlerimiz", "href": "#solutions" },
+      { "label": "Hikayemiz", "href": "#story" },
+      { "label": "Araştırma", "href": "#research" },
+      { "label": "Blog", "href": "#blog" },
+      { "label": "İletişim", "href": "#contact" }
+    ]
+  },
+  "hero": {
+    "image": "/uploads/hero/hero-image.png",
+    "imageAlt": "Akıllı sera tarım teknolojisi",
+    "titleLine1": "GELENEK VE",
+    "titleHighlight": "İNOVASYON",
+    "titleLine2": "TARIMDA BULUŞUYOR",
+    "subtitle": "Organik tarımı uzman IT çözümleriyle güçlendirerek sürdürülebilir bir gelecek inşa ediyoruz.",
+    "ctaText": "TEKNOLOJİMİZİ KEŞFEDİN",
+    "ctaLink": "#solutions",
+    "infoItems": [
+      { "icon": "irrigation", "label": "Akıllı Sulama" },
+      { "icon": "pest", "label": "Zararlı Tespit" },
+      { "icon": "analytics", "label": "Veri Analizi" },
+      { "icon": "soil", "label": "Toprak Sağlığı" }
+    ]
+  },
+  "solutions": {
+    "label": "Çözümlerimiz",
+    "title": "Tarımda Dijital Dönüşüm",
+    "description": "IoT, yapay zeka ve veri analitiği ile tarımsal üretimi optimize eden çözümler sunuyoruz.",
+    "items": [
+      {
+        "icon": "irrigation",
+        "title": "Akıllı Sulama Sistemleri",
+        "desc": "IoT sensörleri ile toprak nemini gerçek zamanlı izleyerek su tüketimini %40'a kadar azaltın."
+      },
+      {
+        "icon": "shield",
+        "title": "Zararlı Tespit ve Analiz",
+        "desc": "Yapay zeka destekli görüntü analizi ile zararlıları erken aşamada tespit edin ve müdahale edin."
+      },
+      {
+        "icon": "chart",
+        "title": "Toprak Sağlığı İzleme",
+        "desc": "Toprak pH, nem ve besin değerlerini sürekli izleyerek optimal verim koşullarını sağlayın."
+      },
+      {
+        "icon": "harvest",
+        "title": "Hasat Optimizasyonu",
+        "desc": "Büyük veri analitiği ile hasat zamanlamasını ve verim tahminlerini optimize edin."
+      }
+    ]
+  },
+  "story": {
+    "label": "Hikayemiz",
+    "title": "Ege'nin Köklerinden Geleceğe",
+    "paragraphs": [
+      "Bitkok, Ege'nin bereketli topraklarında doğan bir hayalin teknoloji ile buluşmasıdır. Nesillerdir süregelen tarım mirasımızı, modern IT çözümleriyle birleştirerek tarımda dijital dönüşümün öncüsü oluyoruz.",
+      "Geleneksel bilgiyi yapay zeka, IoT ve veri analitiği ile harmanlayarak çiftçilerimize sürdürülebilir, verimli ve akıllı tarım çözümleri sunuyoruz."
+    ],
+    "stats": [
+      { "number": 15, "label": "Yıl Deneyim" },
+      { "number": 500, "label": "Aktif Çiftlik" },
+      { "number": 12, "label": "Ülke" }
+    ],
+    "image": "/uploads/story/story-image.png",
+    "imageAlt": "Ege zeytin bahçesi"
+  },
+  "research": {
+    "label": "Araştırma & İnovasyon",
+    "title": "Yol Haritamız",
+    "description": "Kuruluşumuzdan bugüne, inovasyonla dolu yolculuğumuz.",
+    "milestones": [
+      { "year": "2010", "title": "Kuruluş", "desc": "Ege bölgesinde küçük bir tarım teknolojisi girişimi olarak faaliyetlerimize başladık." },
+      { "year": "2015", "title": "IoT Entegrasyonu", "desc": "İlk akıllı sulama sensörlerimizi geliştirerek tarla testlerine başladık." },
+      { "year": "2020", "title": "Yapay Zeka Dönemi", "desc": "Zararlı tespit ve hasat optimizasyonu için AI modellerimizi devreye aldık." },
+      { "year": "2025", "title": "Global Genişleme", "desc": "12 ülkede 500'den fazla çiftliğe teknoloji çözümleri sunmaya başladık." }
+    ]
+  },
+  "blog": {
+    "label": "Blog",
+    "title": "Güncel Yazılarımız",
+    "description": "Tarım teknolojisi dünyasından en son haberler ve içgörüler.",
+    "posts": [
+      {
+        "image": "/uploads/blog/blog-1.png",
+        "imageAlt": "Drone ile hassas tarım",
+        "tag": "Teknoloji",
+        "title": "Drone Teknolojisi ile Hassas Tarımın Geleceği",
+        "excerpt": "Drone'lar tarımsal üretimde devrim yaratıyor. Verim haritalaması ve ilaçlama operasyonlarında yeni dönem.",
+        "date": "15 Mayıs 2026"
+      },
+      {
+        "image": "/uploads/blog/blog-2.png",
+        "imageAlt": "IoT sensörler",
+        "tag": "IoT",
+        "title": "Toprak Sensörleri: Veriye Dayalı Tarım",
+        "excerpt": "IoT tabanlı toprak sensörleri ile su ve gübre yönetimini nasıl optimize edebilirsiniz?",
+        "date": "8 Mayıs 2026"
+      },
+      {
+        "image": "/uploads/blog/blog-3.png",
+        "imageAlt": "Laboratuvar araştırma",
+        "tag": "Araştırma",
+        "title": "Organik Ürün Kalite Analizi ve AI",
+        "excerpt": "Yapay zeka ile organik ürün kalite kontrolünde yeni standartlar belirliyoruz.",
+        "date": "1 Mayıs 2026"
+      }
+    ]
+  },
+  "contact": {
+    "label": "İletişim",
+    "title": "Bizimle İletişime Geçin",
+    "description": "Projeleriniz için bizimle iletişime geçin. Size en uygun çözümü birlikte bulalım.",
+    "details": [
+      { "icon": "location", "label": "Adres", "value": "Ege Bölgesi, Türkiye" },
+      { "icon": "phone", "label": "Telefon", "value": "+90 (232) 000 00 00" },
+      { "icon": "email", "label": "E-posta", "value": "info@bitkok.com" }
+    ]
+  },
+  "footer": {
+    "description": "Gelenek ve teknolojiyi birleştirerek tarımın geleceğini inşa ediyoruz.",
+    "quickLinks": [
+      { "label": "Çözümlerimiz", "href": "#solutions" },
+      { "label": "Hikayemiz", "href": "#story" },
+      { "label": "Araştırma", "href": "#research" },
+      { "label": "Blog", "href": "#blog" }
+    ],
+    "services": [
+      { "label": "Akıllı Sulama", "href": "#" },
+      { "label": "Zararlı Analizi", "href": "#" },
+      { "label": "Toprak İzleme", "href": "#" },
+      { "label": "Danışmanlık", "href": "#" }
+    ],
+    "copyright": "© 2026 Bitkok Tech-Agriculture Solutions. Tüm hakları saklıdır."
+  }
+}

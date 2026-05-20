@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitkok Admin — Yönetim Paneli</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-page">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__header">
+      <svg viewBox="0 0 40 40" fill="none" width="32" height="32">
+        <path d="M20 4C16 4 12 8 12 14c0 4 1 8 4 11 1.5 1.5 3 2.5 4 3v4" stroke="#83C5BE" stroke-width="2" fill="none"/>
+        <path d="M14 10c-2 2-3 5-3 8 0 3 1 6 3 8" stroke="#4F6D7A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <circle cx="24" cy="10" r="1.5" fill="#83C5BE"/><circle cx="27" cy="14" r="1.5" fill="#83C5BE"/>
+        <path d="M20 14h6M20 18h8" stroke="#1B263B" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span>Bitkok Admin</span>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="/admin" class="sidebar__link <%= section === 'overview' ? 'active' : '' %>">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Genel Bakış
+      </a>
+      <a href="/admin/edit/settings" class="sidebar__link <%= section === 'settings' ? 'active' : '' %>">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4m0 14v4M4.22 4.22l2.83 2.83m9.9 9.9l2.83 2.83M1 12h4m14 0h4M4.22 19.78l2.83-2.83m9.9-9.9l2.83-2.83"/></svg>
+        Site Ayarları
+      </a>
+      <a href="/admin/edit/hero" class="sidebar__link <%= section === 'hero' ? 'active' : '' %>">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20M2 12h5"/></svg>
+        Hero Bölümü
+      </a>
+      <a href="/admin/edit/solutions" class="sidebar__link <%= section === 'solutions' ? 'active' : '' %>">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6m0 8v6M2 12h6m8 0h6"/><circle cx="12" cy="12" r="3"/></svg>
+        Çözümlerimiz
+      </a>
+      <a href="/admin/edit/story" class="sidebar__link <%= section === 'story' ? 'active' : '' %>">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        Hikayemiz
+      </a>
+      <a href="/admin/edit/research" class="sidebar__link <%= section === 'research' ? 'active' : '' %>">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        Araştırma
+      </a>
+      <a href="/admin/edit/blog" class="sidebar__link <%= section === 'blog' ? 'active' : '' %>">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Blog
+      </a>
+      <a href="/admin/edit/contact" class="sidebar__link <%= section === 'contact' ? 'active' : '' %>">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        İletişim
+      </a>
+    </nav>
+    <div class="sidebar__footer">
+      <a href="/" target="_blank" class="sidebar__link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Siteyi Görüntüle
+      </a>
+      <a href="/admin/logout" class="sidebar__link sidebar__link--danger">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Çıkış Yap
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="admin-main">
+    <header class="admin-topbar">
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <h2 class="admin-topbar__title">
+        <% if (section === 'overview') { %>Genel Bakış
+        <% } else if (section === 'settings') { %>Site Ayarları
+        <% } else if (section === 'hero') { %>Hero Bölümü
+        <% } else if (section === 'solutions') { %>Çözümlerimiz
+        <% } else if (section === 'story') { %>Hikayemiz
+        <% } else if (section === 'research') { %>Araştırma
+        <% } else if (section === 'blog') { %>Blog Yönetimi
+        <% } else if (section === 'contact') { %>İletişim
+        <% } %>
+      </h2>
+      <div class="admin-topbar__user">
+        <span>Hoşgeldin, <strong><%= admin.username %></strong></span>
+      </div>
+    </header>
+
+    <div class="admin-content" id="adminContent">
+      <!-- OVERVIEW -->
+      <% if (section === 'overview') { %>
+        <div class="overview-grid">
+          <a href="/admin/edit/hero" class="overview-card">
+            <h3>🏠 Hero</h3>
+            <p>Başlık, açıklama ve hero görseli</p>
+          </a>
+          <a href="/admin/edit/solutions" class="overview-card">
+            <h3>🛠️ Çözümler</h3>
+            <p><%= content.solutions.items.length %> çözüm kartı</p>
+          </a>
+          <a href="/admin/edit/story" class="overview-card">
+            <h3>📖 Hikaye</h3>
+            <p>Kuruluş hikayesi ve istatistikler</p>
+          </a>
+          <a href="/admin/edit/blog" class="overview-card">
+            <h3>📝 Blog</h3>
+            <p><%= content.blog.posts.length %> blog yazısı</p>
+          </a>
+          <a href="/admin/edit/contact" class="overview-card">
+            <h3>📞 İletişim</h3>
+            <p>İletişim bilgileri</p>
+          </a>
+          <a href="/admin/edit/settings" class="overview-card">
+            <h3>⚙️ Ayarlar</h3>
+            <p>Logo, site adı, sosyal medya</p>
+          </a>
+        </div>
+
+      <!-- SETTINGS -->
+      <% } else if (section === 'settings') { %>
+        <form class="edit-form" data-section="settings">
+          <div class="form-section">
+            <h3>Logo</h3>
+            <div class="image-upload-area">
+              <% if (content.settings.logo) { %>
+                <img src="<%= content.settings.logo %>" alt="Logo" class="preview-image" id="logoPreview">
+              <% } else { %>
+                <div class="preview-placeholder" id="logoPreview">Logo yüklenmemiş</div>
+              <% } %>
+              <input type="file" id="logoFile" accept="image/*" class="file-input">
+              <label for="logoFile" class="btn-upload">Logo Yükle</label>
+            </div>
+          </div>
+          <div class="form-section">
+            <h3>Site Bilgileri</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Site Adı</label>
+                <input type="text" name="siteName" value="<%= content.settings.siteName %>">
+              </div>
+              <div class="form-group">
+                <label>Domain</label>
+                <input type="text" name="siteDomain" value="<%= content.settings.siteDomain %>">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Slogan</label>
+              <input type="text" name="siteTagline" value="<%= content.settings.siteTagline %>">
+            </div>
+            <div class="form-group">
+              <label>Meta Açıklama</label>
+              <textarea name="metaDescription" rows="3"><%= content.settings.metaDescription %></textarea>
+            </div>
+          </div>
+          <div class="form-section">
+            <h3>Sosyal Medya</h3>
+            <div class="form-group">
+              <label>LinkedIn</label>
+              <input type="text" name="social_linkedin" value="<%= content.settings.socialMedia.linkedin %>">
+            </div>
+            <div class="form-group">
+              <label>Instagram</label>
+              <input type="text" name="social_instagram" value="<%= content.settings.socialMedia.instagram %>">
+            </div>
+            <div class="form-group">
+              <label>Twitter</label>
+              <input type="text" name="social_twitter" value="<%= content.settings.socialMedia.twitter %>">
+            </div>
+          </div>
+          <button type="submit" class="btn-save">💾 Kaydet</button>
+        </form>
+
+      <!-- HERO -->
+      <% } else if (section === 'hero') { %>
+        <form class="edit-form" data-section="hero">
+          <div class="form-section">
+            <h3>Hero Görseli</h3>
+            <div class="image-upload-area">
+              <img src="<%= content.hero.image %>" alt="Hero" class="preview-image" id="heroPreview">
+              <input type="file" id="heroFile" accept="image/*" class="file-input" data-category="hero">
+              <label for="heroFile" class="btn-upload">Görsel Değiştir</label>
+            </div>
+          </div>
+          <div class="form-section">
+            <h3>Başlık</h3>
+            <div class="form-group">
+              <label>Satır 1</label>
+              <input type="text" name="titleLine1" value="<%= content.hero.titleLine1 %>">
+            </div>
+            <div class="form-group">
+              <label>Vurgulu Kelime</label>
+              <input type="text" name="titleHighlight" value="<%= content.hero.titleHighlight %>">
+            </div>
+            <div class="form-group">
+              <label>Satır 2</label>
+              <input type="text" name="titleLine2" value="<%= content.hero.titleLine2 %>">
+            </div>
+          </div>
+          <div class="form-section">
+            <h3>İçerik</h3>
+            <div class="form-group">
+              <label>Alt Yazı</label>
+              <textarea name="subtitle" rows="3"><%= content.hero.subtitle %></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Buton Metni</label>
+                <input type="text" name="ctaText" value="<%= content.hero.ctaText %>">
+              </div>
+              <div class="form-group">
+                <label>Buton Linki</label>
+                <input type="text" name="ctaLink" value="<%= content.hero.ctaLink %>">
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn-save">💾 Kaydet</button>
+        </form>
+
+      <!-- SOLUTIONS -->
+      <% } else if (section === 'solutions') { %>
+        <form class="edit-form" data-section="solutions">
+          <div class="form-section">
+            <h3>Bölüm Başlığı</h3>
+            <div class="form-group">
+              <label>Etiket</label>
+              <input type="text" name="label" value="<%= content.solutions.label %>">
+            </div>
+            <div class="form-group">
+              <label>Başlık</label>
+              <input type="text" name="title" value="<%= content.solutions.title %>">
+            </div>
+            <div class="form-group">
+              <label>Açıklama</label>
+              <textarea name="description" rows="2"><%= content.solutions.description %></textarea>
+            </div>
+          </div>
+          <% content.solutions.items.forEach((item, i) => { %>
+            <div class="form-section card-edit">
+              <h3>Kart <%= i + 1 %>: <%= item.title %></h3>
+              <div class="form-group">
+                <label>Başlık</label>
+                <input type="text" name="items[<%= i %>].title" value="<%= item.title %>">
+              </div>
+              <div class="form-group">
+                <label>Açıklama</label>
+                <textarea name="items[<%= i %>].desc" rows="2"><%= item.desc %></textarea>
+              </div>
+            </div>
+          <% }) %>
+          <button type="submit" class="btn-save">💾 Kaydet</button>
+        </form>
+
+      <!-- STORY -->
+      <% } else if (section === 'story') { %>
+        <form class="edit-form" data-section="story">
+          <div class="form-section">
+            <h3>Hikaye Görseli</h3>
+            <div class="image-upload-area">
+              <img src="<%= content.story.image %>" alt="Hikaye" class="preview-image" id="storyPreview">
+              <input type="file" id="storyFile" accept="image/*" class="file-input" data-category="story">
+              <label for="storyFile" class="btn-upload">Görsel Değiştir</label>
+            </div>
+          </div>
+          <div class="form-section">
+            <h3>Başlık</h3>
+            <div class="form-group">
+              <label>Etiket</label>
+              <input type="text" name="label" value="<%= content.story.label %>">
+            </div>
+            <div class="form-group">
+              <label>Başlık</label>
+              <input type="text" name="title" value="<%= content.story.title %>">
+            </div>
+          </div>
+          <div class="form-section">
+            <h3>Paragraflar</h3>
+            <% content.story.paragraphs.forEach((p, i) => { %>
+              <div class="form-group">
+                <label>Paragraf <%= i + 1 %></label>
+                <textarea name="paragraphs[<%= i %>]" rows="3"><%= p %></textarea>
+              </div>
+            <% }) %>
+          </div>
+          <div class="form-section">
+            <h3>İstatistikler</h3>
+            <% content.story.stats.forEach((stat, i) => { %>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Sayı</label>
+                  <input type="number" name="stats[<%= i %>].number" value="<%= stat.number %>">
+                </div>
+                <div class="form-group">
+                  <label>Etiket</label>
+                  <input type="text" name="stats[<%= i %>].label" value="<%= stat.label %>">
+                </div>
+              </div>
+            <% }) %>
+          </div>
+          <button type="submit" class="btn-save">💾 Kaydet</button>
+        </form>
+
+      <!-- RESEARCH -->
+      <% } else if (section === 'research') { %>
+        <form class="edit-form" data-section="research">
+          <div class="form-section">
+            <h3>Bölüm Başlığı</h3>
+            <div class="form-group"><label>Başlık</label><input type="text" name="title" value="<%= content.research.title %>"></div>
+            <div class="form-group"><label>Açıklama</label><textarea name="description" rows="2"><%= content.research.description %></textarea></div>
+          </div>
+          <% content.research.milestones.forEach((ms, i) => { %>
+            <div class="form-section card-edit">
+              <h3>Kilometre Taşı <%= i + 1 %></h3>
+              <div class="form-row">
+                <div class="form-group"><label>Yıl</label><input type="text" name="milestones[<%= i %>].year" value="<%= ms.year %>"></div>
+                <div class="form-group"><label>Başlık</label><input type="text" name="milestones[<%= i %>].title" value="<%= ms.title %>"></div>
+              </div>
+              <div class="form-group"><label>Açıklama</label><textarea name="milestones[<%= i %>].desc" rows="2"><%= ms.desc %></textarea></div>
+            </div>
+          <% }) %>
+          <button type="submit" class="btn-save">💾 Kaydet</button>
+        </form>
+
+      <!-- BLOG -->
+      <% } else if (section === 'blog') { %>
+        <form class="edit-form" data-section="blog">
+          <div class="form-section">
+            <h3>Bölüm Başlığı</h3>
+            <div class="form-group"><label>Başlık</label><input type="text" name="title" value="<%= content.blog.title %>"></div>
+          </div>
+          <% content.blog.posts.forEach((post, i) => { %>
+            <div class="form-section card-edit">
+              <h3>Yazı <%= i + 1 %>: <%= post.title %></h3>
+              <div class="image-upload-area small">
+                <img src="<%= post.image %>" alt="" class="preview-image" id="blogPreview<%= i %>">
+                <input type="file" id="blogFile<%= i %>" accept="image/*" class="file-input" data-category="blog" data-index="<%= i %>">
+                <label for="blogFile<%= i %>" class="btn-upload">Görsel Değiştir</label>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label>Etiket</label><input type="text" name="posts[<%= i %>].tag" value="<%= post.tag %>"></div>
+                <div class="form-group"><label>Tarih</label><input type="text" name="posts[<%= i %>].date" value="<%= post.date %>"></div>
+              </div>
+              <div class="form-group"><label>Başlık</label><input type="text" name="posts[<%= i %>].title" value="<%= post.title %>"></div>
+              <div class="form-group"><label>Özet</label><textarea name="posts[<%= i %>].excerpt" rows="2"><%= post.excerpt %></textarea></div>
+            </div>
+          <% }) %>
+          <button type="submit" class="btn-save">💾 Kaydet</button>
+        </form>
+
+      <!-- CONTACT -->
+      <% } else if (section === 'contact') { %>
+        <form class="edit-form" data-section="contact">
+          <div class="form-section">
+            <h3>Başlık</h3>
+            <div class="form-group"><label>Başlık</label><input type="text" name="title" value="<%= content.contact.title %>"></div>
+            <div class="form-group"><label>Açıklama</label><textarea name="description" rows="2"><%= content.contact.description %></textarea></div>
+          </div>
+          <% content.contact.details.forEach((d, i) => { %>
+            <div class="form-section card-edit">
+              <h3><%= d.label %></h3>
+              <div class="form-group"><label>Değer</label><input type="text" name="details[<%= i %>].value" value="<%= d.value %>"></div>
+            </div>
+          <% }) %>
+          <button type="submit" class="btn-save">💾 Kaydet</button>
+        </form>
+      <% } %>
+
+      <!-- Toast Notification -->
+      <div class="toast" id="toast"></div>
+    </div>
+  </main>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

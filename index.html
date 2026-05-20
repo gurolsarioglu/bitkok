@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bitkok - Gelenek ve inovasyon tarımda buluşuyor. Organik tarımı uzman IT çözümleriyle güçlendiriyoruz.">
+  <title>Bitkok — Tech-Agriculture Solutions</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>🌿</text></svg>">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="navbar__logo">
+      <svg class="navbar__logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 4C16 4 12 8 12 14c0 4 1 8 4 11 1.5 1.5 3 2.5 4 3v4h0c0 0 0 0 0 0" stroke="#83C5BE" stroke-width="2" fill="none"/>
+        <path d="M14 10c-2 2-3 5-3 8 0 3 1 6 3 8" stroke="#4F6D7A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M17 7c-1 2-2 5-2 8s1 6 2 8" stroke="#4F6D7A" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <circle cx="24" cy="10" r="1.5" fill="#83C5BE"/>
+        <circle cx="27" cy="14" r="1.5" fill="#83C5BE"/>
+        <circle cx="25" cy="18" r="1.5" fill="#83C5BE"/>
+        <circle cx="28" cy="22" r="1" fill="#83C5BE"/>
+        <path d="M20 14h6M20 18h8M20 22h5" stroke="#1B263B" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M22 10v4M26 14v4M24 18v4" stroke="#1B263B" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <span class="navbar__logo-text">bitkok<span>.com</span></span>
+    </a>
+    <ul class="navbar__links" id="navLinks">
+      <li><a href="#solutions">Çözümlerimiz</a></li>
+      <li><a href="#story">Hikayemiz</a></li>
+      <li><a href="#research">Araştırma</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">İletişim</a></li>
+    </ul>
+    <button class="navbar__hamburger" id="hamburger" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero__image-wrapper reveal">
+      <img src="assets/images/hero-image.png" alt="Akıllı sera tarım teknolojisi" class="hero__image" loading="eager">
+    </div>
+    <div class="hero__content">
+      <h1 class="hero__title reveal">GELENEK VE <span>İNOVASYON</span> TARIMDA BULUŞUYOR</h1>
+      <p class="hero__subtitle reveal reveal-delay-1">Organik tarımı uzman IT çözümleriyle güçlendirerek sürdürülebilir bir gelecek inşa ediyoruz.</p>
+      <a href="#solutions" class="btn btn--primary reveal reveal-delay-2">TEKNOLOJİMİZİ KEŞFEDİN</a>
+      <div class="hero__infographic reveal reveal-delay-3">
+        <div class="hero__info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6m0 8v6M2 12h6m8 0h6"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>Akıllı Sulama</span>
+        </div>
+        <div class="hero__info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span>Zararlı Tespit</span>
+        </div>
+        <div class="hero__info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17h4v4H3zM10 13h4v8h-4zM17 9h4v12h-4z"/></svg>
+          <span>Veri Analizi</span>
+        </div>
+        <div class="hero__info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span>Toprak Sağlığı</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section class="solutions" id="solutions">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Çözümlerimiz</span>
+      <h2 class="section-title">Tarımda Dijital Dönüşüm</h2>
+      <p class="section-desc">IoT, yapay zeka ve veri analitiği ile tarımsal üretimi optimize eden çözümler sunuyoruz.</p>
+    </div>
+    <div class="solutions__grid">
+      <div class="solution-card reveal reveal-delay-1">
+        <div class="solution-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6m0 8v6M2 12h6m8 0h6"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3 class="solution-card__title">Akıllı Sulama Sistemleri</h3>
+        <p class="solution-card__desc">IoT sensörleri ile toprak nemini gerçek zamanlı izleyerek su tüketimini %40'a kadar azaltın.</p>
+      </div>
+      <div class="solution-card reveal reveal-delay-2">
+        <div class="solution-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="solution-card__title">Zararlı Tespit ve Analiz</h3>
+        <p class="solution-card__desc">Yapay zeka destekli görüntü analizi ile zararlıları erken aşamada tespit edin ve müdahale edin.</p>
+      </div>
+      <div class="solution-card reveal reveal-delay-3">
+        <div class="solution-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17h4v4H3zM10 13h4v8h-4zM17 9h4v12h-4z"/></svg>
+        </div>
+        <h3 class="solution-card__title">Toprak Sağlığı İzleme</h3>
+        <p class="solution-card__desc">Toprak pH, nem ve besin değerlerini sürekli izleyerek optimal verim koşullarını sağlayın.</p>
+      </div>
+      <div class="solution-card reveal reveal-delay-4">
+        <div class="solution-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3 class="solution-card__title">Hasat Optimizasyonu</h3>
+        <p class="solution-card__desc">Büyük veri analitiği ile hasat zamanlamasını ve verim tahminlerini optimize edin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="story__content">
+      <span class="section-label reveal">Hikayemiz</span>
+      <h2 class="section-title reveal">Ege'nin Köklerinden Geleceğe</h2>
+      <div class="story__accent reveal"></div>
+      <p class="story__text reveal">Bitkok, Ege'nin bereketli topraklarında doğan bir hayalin teknoloji ile buluşmasıdır. Nesillerdir süregelen tarım mirasımızı, modern IT çözümleriyle birleştirerek tarımda dijital dönüşümün öncüsü oluyoruz.</p>
+      <p class="story__text reveal">Geleneksel bilgiyi yapay zeka, IoT ve veri analitiği ile harmanlayarak çiftçilerimize sürdürülebilir, verimli ve akıllı tarım çözümleri sunuyoruz.</p>
+      <div class="story__stats reveal">
+        <div class="stat-item">
+          <div class="stat-item__number" data-target="15">0</div>
+          <div class="stat-item__label">Yıl Deneyim</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number" data-target="500">0</div>
+          <div class="stat-item__label">Aktif Çiftlik</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number" data-target="12">0</div>
+          <div class="stat-item__label">Ülke</div>
+        </div>
+      </div>
+    </div>
+    <div class="story__image-wrapper reveal">
+      <img src="assets/images/story-image.png" alt="Ege zeytin bahçesi" class="story__image" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="research" id="research">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Araştırma & İnovasyon</span>
+      <h2 class="section-title">Yol Haritamız</h2>
+      <p class="section-desc">Kuruluşumuzdan bugüne, inovasyonla dolu yolculuğumuz.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline__item reveal">
+        <div class="timeline__dot"></div>
+        <div class="timeline__content">
+          <span class="timeline__year">2010</span>
+          <h3 class="timeline__title">Kuruluş</h3>
+          <p class="timeline__desc">Ege bölgesinde küçük bir tarım teknolojisi girişimi olarak faaliyetlerimize başladık.</p>
+        </div>
+        <div style="flex:1"></div>
+      </div>
+      <div class="timeline__item reveal">
+        <div class="timeline__dot"></div>
+        <div style="flex:1"></div>
+        <div class="timeline__content">
+          <span class="timeline__year">2015</span>
+          <h3 class="timeline__title">IoT Entegrasyonu</h3>
+          <p class="timeline__desc">İlk akıllı sulama sensörlerimizi geliştirerek tarla testlerine başladık.</p>
+        </div>
+      </div>
+      <div class="timeline__item reveal">
+        <div class="timeline__dot"></div>
+        <div class="timeline__content">
+          <span class="timeline__year">2020</span>
+          <h3 class="timeline__title">Yapay Zeka Dönemi</h3>
+          <p class="timeline__desc">Zararlı tespit ve hasat optimizasyonu için AI modellerimizi devreye aldık.</p>
+        </div>
+        <div style="flex:1"></div>
+      </div>
+      <div class="timeline__item reveal">
+        <div class="timeline__dot"></div>
+        <div style="flex:1"></div>
+        <div class="timeline__content">
+          <span class="timeline__year">2025</span>
+          <h3 class="timeline__title">Global Genişleme</h3>
+          <p class="timeline__desc">12 ülkede 500'den fazla çiftliğe teknoloji çözümleri sunmaya başladık.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Blog</span>
+      <h2 class="section-title">Güncel Yazılarımız</h2>
+      <p class="section-desc">Tarım teknolojisi dünyasından en son haberler ve içgörüler.</p>
+    </div>
+    <div class="blog__grid">
+      <article class="blog-card reveal reveal-delay-1">
+        <div class="blog-card__image-wrapper">
+          <img src="assets/images/blog/blog-1.png" alt="Drone ile hassas tarım" class="blog-card__image" loading="lazy">
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-card__tag">Teknoloji</span>
+          <h3 class="blog-card__title">Drone Teknolojisi ile Hassas Tarımın Geleceği</h3>
+          <p class="blog-card__excerpt">Drone'lar tarımsal üretimde devrim yaratıyor. Verim haritalaması ve ilaçlama operasyonlarında yeni dönem.</p>
+          <time class="blog-card__date">15 Mayıs 2026</time>
+        </div>
+      </article>
+      <article class="blog-card reveal reveal-delay-2">
+        <div class="blog-card__image-wrapper">
+          <img src="assets/images/blog/blog-2.png" alt="IoT sensörler" class="blog-card__image" loading="lazy">
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-card__tag">IoT</span>
+          <h3 class="blog-card__title">Toprak Sensörleri: Veriye Dayalı Tarım</h3>
+          <p class="blog-card__excerpt">IoT tabanlı toprak sensörleri ile su ve gübre yönetimini nasıl optimize edebilirsiniz?</p>
+          <time class="blog-card__date">8 Mayıs 2026</time>
+        </div>
+      </article>
+      <article class="blog-card reveal reveal-delay-3">
+        <div class="blog-card__image-wrapper">
+          <img src="assets/images/blog/blog-3.png" alt="Laboratuvar araştırma" class="blog-card__image" loading="lazy">
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-card__tag">Araştırma</span>
+          <h3 class="blog-card__title">Organik Ürün Kalite Analizi ve AI</h3>
+          <p class="blog-card__excerpt">Yapay zeka ile organik ürün kalite kontrolünde yeni standartlar belirliyoruz.</p>
+          <time class="blog-card__date">1 Mayıs 2026</time>
+        </div>
+      </article>
+    </div>
+    <div class="blog__cta reveal">
+      <a href="#" class="btn btn--secondary">TÜM YAZILAR</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact__info reveal">
+      <span class="section-label">İletişim</span>
+      <h3>Bizimle İletişime Geçin</h3>
+      <p>Projeleriniz için bizimle iletişime geçin. Size en uygun çözümü birlikte bulalım.</p>
+      <div class="contact__details">
+        <div class="contact__detail">
+          <div class="contact__detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact__detail-text">
+            <strong>Adres</strong>
+            <span>Ege Bölgesi, Türkiye</span>
+          </div>
+        </div>
+        <div class="contact__detail">
+          <div class="contact__detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div class="contact__detail-text">
+            <strong>Telefon</strong>
+            <span>+90 (232) 000 00 00</span>
+          </div>
+        </div>
+        <div class="contact__detail">
+          <div class="contact__detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="contact__detail-text">
+            <strong>E-posta</strong>
+            <span>info@bitkok.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form class="contact__form reveal" id="contactForm">
+      <div class="form-group">
+        <label for="name">Adınız Soyadınız</label>
+        <input type="text" id="name" placeholder="Adınızı girin" required>
+      </div>
+      <div class="form-group">
+        <label for="email">E-posta Adresiniz</label>
+        <input type="email" id="email" placeholder="E-posta adresinizi girin" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Konu</label>
+        <input type="text" id="subject" placeholder="Konu başlığı">
+      </div>
+      <div class="form-group">
+        <label for="message">Mesajınız</label>
+        <textarea id="message" placeholder="Mesajınızı yazın" required></textarea>
+      </div>
+      <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">MESAJ GÖNDER</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="#" class="navbar__logo">
+          <svg class="navbar__logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4C16 4 12 8 12 14c0 4 1 8 4 11 1.5 1.5 3 2.5 4 3v4" stroke="#83C5BE" stroke-width="2" fill="none"/>
+            <path d="M14 10c-2 2-3 5-3 8 0 3 1 6 3 8" stroke="#4F6D7A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M17 7c-1 2-2 5-2 8s1 6 2 8" stroke="#4F6D7A" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <circle cx="24" cy="10" r="1.5" fill="#83C5BE"/><circle cx="27" cy="14" r="1.5" fill="#83C5BE"/><circle cx="25" cy="18" r="1.5" fill="#83C5BE"/>
+            <path d="M20 14h6M20 18h8M20 22h5" stroke="#1B263B" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="navbar__logo-text">bitkok<span>.com</span></span>
+        </a>
+        <p>Gelenek ve teknolojiyi birleştirerek tarımın geleceğini inşa ediyoruz.</p>
+      </div>
+      <div>
+        <h4 class="footer__heading">Hızlı Linkler</h4>
+        <ul class="footer__links">
+          <li><a href="#solutions">Çözümlerimiz</a></li>
+          <li><a href="#story">Hikayemiz</a></li>
+          <li><a href="#research">Araştırma</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__heading">Hizmetler</h4>
+        <ul class="footer__links">
+          <li><a href="#">Akıllı Sulama</a></li>
+          <li><a href="#">Zararlı Analizi</a></li>
+          <li><a href="#">Toprak İzleme</a></li>
+          <li><a href="#">Danışmanlık</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__heading">Takip Edin</h4>
+        <div class="footer__social">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012 7.5v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Bitkok Tech-Agriculture Solutions. Tüm hakları saklıdır.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

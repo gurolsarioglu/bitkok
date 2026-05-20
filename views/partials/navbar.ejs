@@ -1,0 +1,27 @@
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="/" class="navbar__logo">
+      <% if (content.settings.logo) { %>
+        <img src="<%= content.settings.logo %>" alt="<%= content.settings.siteName %>" class="navbar__logo-icon" style="width:40px;height:40px;object-fit:contain;">
+      <% } else { %>
+        <svg class="navbar__logo-icon" viewBox="0 0 40 40" fill="none">
+          <path d="M20 4C16 4 12 8 12 14c0 4 1 8 4 11 1.5 1.5 3 2.5 4 3v4" stroke="#83C5BE" stroke-width="2" fill="none"/>
+          <path d="M14 10c-2 2-3 5-3 8 0 3 1 6 3 8" stroke="#4F6D7A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M17 7c-1 2-2 5-2 8s1 6 2 8" stroke="#4F6D7A" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="24" cy="10" r="1.5" fill="#83C5BE"/><circle cx="27" cy="14" r="1.5" fill="#83C5BE"/><circle cx="25" cy="18" r="1.5" fill="#83C5BE"/><circle cx="28" cy="22" r="1" fill="#83C5BE"/>
+          <path d="M20 14h6M20 18h8M20 22h5" stroke="#1B263B" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M22 10v4M26 14v4M24 18v4" stroke="#1B263B" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      <% } %>
+      <span class="navbar__logo-text"><%= content.settings.siteName %><span><%= content.settings.siteDomain %></span></span>
+    </a>
+    <ul class="navbar__links" id="navLinks">
+      <% content.navbar.links.forEach(link => { %>
+        <li><a href="<%= link.href %>"><%= link.label %></a></li>
+      <% }) %>
+    </ul>
+    <button class="navbar__hamburger" id="hamburger" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>

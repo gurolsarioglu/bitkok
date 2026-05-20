@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="<%= content.settings.metaDescription %>">
+  <title><%= content.settings.siteName %> — <%= content.settings.siteTagline %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<%- include('../partials/navbar', { content }) %>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero__image-wrapper reveal">
+      <img src="<%= content.hero.image %>" alt="<%= content.hero.imageAlt %>" class="hero__image" loading="eager">
+    </div>
+    <div class="hero__content">
+      <h1 class="hero__title reveal"><%= content.hero.titleLine1 %> <span><%= content.hero.titleHighlight %></span> <%= content.hero.titleLine2 %></h1>
+      <p class="hero__subtitle reveal reveal-delay-1"><%= content.hero.subtitle %></p>
+      <a href="<%= content.hero.ctaLink %>" class="btn btn--primary reveal reveal-delay-2"><%= content.hero.ctaText %></a>
+      <div class="hero__infographic reveal reveal-delay-3">
+        <% content.hero.infoItems.forEach(item => { %>
+          <div class="hero__info-item">
+            <%- include('../partials/icon', { name: item.icon }) %>
+            <span><%= item.label %></span>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section class="solutions" id="solutions">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label"><%= content.solutions.label %></span>
+      <h2 class="section-title"><%= content.solutions.title %></h2>
+      <p class="section-desc"><%= content.solutions.description %></p>
+    </div>
+    <div class="solutions__grid">
+      <% content.solutions.items.forEach((item, i) => { %>
+        <div class="solution-card reveal reveal-delay-<%= i + 1 %>">
+          <div class="solution-card__icon">
+            <%- include('../partials/icon', { name: item.icon }) %>
+          </div>
+          <h3 class="solution-card__title"><%= item.title %></h3>
+          <p class="solution-card__desc"><%= item.desc %></p>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="story__content">
+      <span class="section-label reveal"><%= content.story.label %></span>
+      <h2 class="section-title reveal"><%= content.story.title %></h2>
+      <div class="story__accent reveal"></div>
+      <% content.story.paragraphs.forEach(p => { %>
+        <p class="story__text reveal"><%= p %></p>
+      <% }) %>
+      <div class="story__stats reveal">
+        <% content.story.stats.forEach(stat => { %>
+          <div class="stat-item">
+            <div class="stat-item__number" data-target="<%= stat.number %>">0</div>
+            <div class="stat-item__label"><%= stat.label %></div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+    <div class="story__image-wrapper reveal">
+      <img src="<%= content.story.image %>" alt="<%= content.story.imageAlt %>" class="story__image" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="research" id="research">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label"><%= content.research.label %></span>
+      <h2 class="section-title"><%= content.research.title %></h2>
+      <p class="section-desc"><%= content.research.description %></p>
+    </div>
+    <div class="timeline">
+      <% content.research.milestones.forEach((ms, i) => { %>
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <% if (i % 2 === 0) { %>
+            <div class="timeline__content">
+              <span class="timeline__year"><%= ms.year %></span>
+              <h3 class="timeline__title"><%= ms.title %></h3>
+              <p class="timeline__desc"><%= ms.desc %></p>
+            </div>
+            <div style="flex:1"></div>
+          <% } else { %>
+            <div style="flex:1"></div>
+            <div class="timeline__content">
+              <span class="timeline__year"><%= ms.year %></span>
+              <h3 class="timeline__title"><%= ms.title %></h3>
+              <p class="timeline__desc"><%= ms.desc %></p>
+            </div>
+          <% } %>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label"><%= content.blog.label %></span>
+      <h2 class="section-title"><%= content.blog.title %></h2>
+      <p class="section-desc"><%= content.blog.description %></p>
+    </div>
+    <div class="blog__grid">
+      <% content.blog.posts.forEach((post, i) => { %>
+        <article class="blog-card reveal reveal-delay-<%= i + 1 %>">
+          <div class="blog-card__image-wrapper">
+            <img src="<%= post.image %>" alt="<%= post.imageAlt %>" class="blog-card__image" loading="lazy">
+          </div>
+          <div class="blog-card__body">
+            <span class="blog-card__tag"><%= post.tag %></span>
+            <h3 class="blog-card__title"><%= post.title %></h3>
+            <p class="blog-card__excerpt"><%= post.excerpt %></p>
+            <time class="blog-card__date"><%= post.date %></time>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+    <div class="blog__cta reveal">
+      <a href="#" class="btn btn--secondary">TÜM YAZILAR</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact__info reveal">
+      <span class="section-label"><%= content.contact.label %></span>
+      <h3><%= content.contact.title %></h3>
+      <p><%= content.contact.description %></p>
+      <div class="contact__details">
+        <% content.contact.details.forEach(detail => { %>
+          <div class="contact__detail">
+            <div class="contact__detail-icon">
+              <%- include('../partials/icon', { name: detail.icon }) %>
+            </div>
+            <div class="contact__detail-text">
+              <strong><%= detail.label %></strong>
+              <span><%= detail.value %></span>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+    <form class="contact__form reveal" id="contactForm">
+      <div class="form-group">
+        <label for="name">Adınız Soyadınız</label>
+        <input type="text" id="name" placeholder="Adınızı girin" required>
+      </div>
+      <div class="form-group">
+        <label for="email">E-posta Adresiniz</label>
+        <input type="email" id="email" placeholder="E-posta adresinizi girin" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Konu</label>
+        <input type="text" id="subject" placeholder="Konu başlığı">
+      </div>
+      <div class="form-group">
+        <label for="message">Mesajınız</label>
+        <textarea id="message" placeholder="Mesajınızı yazın" required></textarea>
+      </div>
+      <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">MESAJ GÖNDER</button>
+    </form>
+  </div>
+</section>
+
+<%- include('../partials/footer', { content }) %>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
