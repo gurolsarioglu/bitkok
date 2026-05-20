@@ -16,6 +16,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session(config.session));
 
 // Routes
+const themeCtrl = require('./controllers/theme.controller');
+app.get('/css/theme.css', themeCtrl.generateThemeCSS);
 app.use('/', require('./routes/frontend.routes'));
 app.use('/admin', require('./routes/admin.routes'));
 

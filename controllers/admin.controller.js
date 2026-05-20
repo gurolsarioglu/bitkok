@@ -39,7 +39,7 @@ exports.dashboard = (req, res) => {
 exports.editSection = (req, res) => {
   const { section } = req.params;
   const content = contentModel.getAll();
-  const validSections = ['hero', 'solutions', 'story', 'research', 'blog', 'contact', 'settings', 'navbar', 'footer'];
+  const validSections = ['hero', 'solutions', 'story', 'research', 'blog', 'contact', 'settings', 'navbar', 'footer', 'design'];
   if (!validSections.includes(section)) return res.redirect('/admin');
   res.render('admin/dashboard', { content, section, admin: req.session.admin });
 };

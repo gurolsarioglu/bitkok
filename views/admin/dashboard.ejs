@@ -27,6 +27,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4m0 14v4M4.22 4.22l2.83 2.83m9.9 9.9l2.83 2.83M1 12h4m14 0h4M4.22 19.78l2.83-2.83m9.9-9.9l2.83-2.83"/></svg>
         Site Ayarları
       </a>
+      <a href="/admin/edit/design" class="sidebar__link <%= section === 'design' ? 'active' : '' %>">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+        Tasarım Sistemi
+      </a>
       <a href="/admin/edit/hero" class="sidebar__link <%= section === 'hero' ? 'active' : '' %>">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20M2 12h5"/></svg>
         Hero Bölümü
@@ -79,6 +83,7 @@
         <% } else if (section === 'research') { %>Araştırma
         <% } else if (section === 'blog') { %>Blog Yönetimi
         <% } else if (section === 'contact') { %>İletişim
+        <% } else if (section === 'design') { %>Tasarım Sistemi
         <% } %>
       </h2>
       <div class="admin-topbar__user">
@@ -113,6 +118,10 @@
           <a href="/admin/edit/settings" class="overview-card">
             <h3>⚙️ Ayarlar</h3>
             <p>Logo, site adı, sosyal medya</p>
+          </a>
+          <a href="/admin/edit/design" class="overview-card" style="border-left:3px solid #83C5BE">
+            <h3>🎨 Tasarım Sistemi</h3>
+            <p>Fontlar, renkler, spacing, efektler</p>
           </a>
         </div>
 
@@ -361,6 +370,158 @@
             </div>
           <% }) %>
           <button type="submit" class="btn-save">💾 Kaydet</button>
+        </form>
+
+      <!-- DESIGN SYSTEM -->
+      <% } else if (section === 'design') { %>
+        <% const ds = content.design || {}; const fonts = ds.fonts || {}; const colors = ds.colors || {}; const typo = ds.typography || {}; const spacing = ds.spacing || {}; const borders = ds.borders || {}; const effects = ds.effects || {}; %>
+        <form class="edit-form" data-section="design" id="designForm">
+
+          <!-- FONTS -->
+          <div class="form-section" style="border-left:3px solid #83C5BE">
+            <h3>🔤 Yazı Tipleri (Google Fonts)</h3>
+            <p style="color:var(--white-60);font-size:0.82rem;margin-bottom:16px">Kurumsal kimlik çalışmanızda belirlediğiniz fontları seçin. Tüm Google Fonts desteklenir.</p>
+            <div class="form-row" style="grid-template-columns:1fr 1fr 1fr">
+              <div class="form-group">
+                <label>Başlık Fontu</label>
+                <select name="fonts.heading" class="font-select" data-preview="heading-preview">
+                  <option value="Playfair Display" <%= fonts.heading==='Playfair Display'?'selected':'' %>>Playfair Display</option>
+                  <option value="Cormorant Garamond" <%= fonts.heading==='Cormorant Garamond'?'selected':'' %>>Cormorant Garamond</option>
+                  <option value="Merriweather" <%= fonts.heading==='Merriweather'?'selected':'' %>>Merriweather</option>
+                  <option value="Lora" <%= fonts.heading==='Lora'?'selected':'' %>>Lora</option>
+                  <option value="DM Serif Display" <%= fonts.heading==='DM Serif Display'?'selected':'' %>>DM Serif Display</option>
+                  <option value="Poppins" <%= fonts.heading==='Poppins'?'selected':'' %>>Poppins</option>
+                  <option value="Montserrat" <%= fonts.heading==='Montserrat'?'selected':'' %>>Montserrat</option>
+                  <option value="Raleway" <%= fonts.heading==='Raleway'?'selected':'' %>>Raleway</option>
+                  <option value="Outfit" <%= fonts.heading==='Outfit'?'selected':'' %>>Outfit</option>
+                  <option value="Inter" <%= fonts.heading==='Inter'?'selected':'' %>>Inter</option>
+                </select>
+                <div class="font-preview" id="heading-preview" style="font-size:1.4rem;margin-top:8px;font-weight:700">Aa Başlık</div>
+              </div>
+              <div class="form-group">
+                <label>Gövde Fontu</label>
+                <select name="fonts.body" class="font-select" data-preview="body-preview">
+                  <option value="Inter" <%= fonts.body==='Inter'?'selected':'' %>>Inter</option>
+                  <option value="Open Sans" <%= fonts.body==='Open Sans'?'selected':'' %>>Open Sans</option>
+                  <option value="Roboto" <%= fonts.body==='Roboto'?'selected':'' %>>Roboto</option>
+                  <option value="Nunito" <%= fonts.body==='Nunito'?'selected':'' %>>Nunito</option>
+                  <option value="Source Sans 3" <%= fonts.body==='Source Sans 3'?'selected':'' %>>Source Sans 3</option>
+                  <option value="DM Sans" <%= fonts.body==='DM Sans'?'selected':'' %>>DM Sans</option>
+                  <option value="Poppins" <%= fonts.body==='Poppins'?'selected':'' %>>Poppins</option>
+                  <option value="Lato" <%= fonts.body==='Lato'?'selected':'' %>>Lato</option>
+                  <option value="Outfit" <%= fonts.body==='Outfit'?'selected':'' %>>Outfit</option>
+                  <option value="Montserrat" <%= fonts.body==='Montserrat'?'selected':'' %>>Montserrat</option>
+                </select>
+                <div class="font-preview" id="body-preview" style="font-size:1rem;margin-top:8px">Aa Gövde metni örneği</div>
+              </div>
+              <div class="form-group">
+                <label>Logo Fontu</label>
+                <select name="fonts.logo" class="font-select" data-preview="logo-preview">
+                  <option value="Montserrat" <%= fonts.logo==='Montserrat'?'selected':'' %>>Montserrat</option>
+                  <option value="Poppins" <%= fonts.logo==='Poppins'?'selected':'' %>>Poppins</option>
+                  <option value="Outfit" <%= fonts.logo==='Outfit'?'selected':'' %>>Outfit</option>
+                  <option value="Inter" <%= fonts.logo==='Inter'?'selected':'' %>>Inter</option>
+                  <option value="Raleway" <%= fonts.logo==='Raleway'?'selected':'' %>>Raleway</option>
+                  <option value="DM Sans" <%= fonts.logo==='DM Sans'?'selected':'' %>>DM Sans</option>
+                </select>
+                <div class="font-preview" id="logo-preview" style="font-size:1.2rem;margin-top:8px;font-weight:700">bitkok.com</div>
+              </div>
+            </div>
+            <div class="form-row" style="grid-template-columns:1fr 1fr 1fr">
+              <div class="form-group"><label>Başlık Ağırlık</label><select name="fonts.headingWeight"><option value="400" <%= fonts.headingWeight==='400'?'selected':'' %>>Normal (400)</option><option value="600" <%= fonts.headingWeight==='600'?'selected':'' %>>Semi Bold (600)</option><option value="700" <%= fonts.headingWeight==='700'?'selected':'' %>>Bold (700)</option><option value="800" <%= fonts.headingWeight==='800'?'selected':'' %>>Extra Bold (800)</option></select></div>
+              <div class="form-group"><label>Gövde Ağırlık</label><select name="fonts.bodyWeight"><option value="300" <%= fonts.bodyWeight==='300'?'selected':'' %>>Light (300)</option><option value="400" <%= fonts.bodyWeight==='400'?'selected':'' %>>Normal (400)</option><option value="500" <%= fonts.bodyWeight==='500'?'selected':'' %>>Medium (500)</option></select></div>
+              <div class="form-group"><label>Logo Ağırlık</label><select name="fonts.logoWeight"><option value="600" <%= fonts.logoWeight==='600'?'selected':'' %>>Semi Bold (600)</option><option value="700" <%= fonts.logoWeight==='700'?'selected':'' %>>Bold (700)</option><option value="800" <%= fonts.logoWeight==='800'?'selected':'' %>>Extra Bold (800)</option></select></div>
+            </div>
+          </div>
+
+          <!-- COLORS -->
+          <div class="form-section" style="border-left:3px solid #E0A96D">
+            <h3>🎨 Renk Paleti</h3>
+            <p style="color:var(--white-60);font-size:0.82rem;margin-bottom:16px">Kurumsal kimlik renklerinizi buradan yönetin. Tüm site otomatik güncellenir.</p>
+            <h4 style="font-size:0.85rem;color:var(--sand);margin-bottom:12px">Ana Renkler</h4>
+            <div class="color-grid">
+              <div class="color-item"><label>Tech Navy (Ana)</label><div class="color-input-wrap"><input type="color" name="colors.primary" value="<%= colors.primary || '#1B263B' %>"><span><%= colors.primary || '#1B263B' %></span></div></div>
+              <div class="color-item"><label>Digital Olive</label><div class="color-input-wrap"><input type="color" name="colors.secondary" value="<%= colors.secondary || '#4F6D7A' %>"><span><%= colors.secondary || '#4F6D7A' %></span></div></div>
+              <div class="color-item"><label>Bio Sprout (Aksan)</label><div class="color-input-wrap"><input type="color" name="colors.accent" value="<%= colors.accent || '#83C5BE' %>"><span><%= colors.accent || '#83C5BE' %></span></div></div>
+              <div class="color-item"><label>Warm Sand (Vurgu)</label><div class="color-input-wrap"><input type="color" name="colors.highlight" value="<%= colors.highlight || '#E0A96D' %>"><span><%= colors.highlight || '#E0A96D' %></span></div></div>
+              <div class="color-item"><label>Koyu Arka Plan</label><div class="color-input-wrap"><input type="color" name="colors.primaryDark" value="<%= colors.primaryDark || '#0F1A2B' %>"><span><%= colors.primaryDark || '#0F1A2B' %></span></div></div>
+            </div>
+            <h4 style="font-size:0.85rem;color:var(--sand);margin:20px 0 12px">Metin Renkleri</h4>
+            <div class="color-grid">
+              <div class="color-item"><label>Başlık</label><div class="color-input-wrap"><input type="color" name="colors.textHeading" value="<%= colors.textHeading || '#FFFFFF' %>"><span><%= colors.textHeading || '#FFFFFF' %></span></div></div>
+              <div class="color-item"><label>Link Rengi</label><div class="color-input-wrap"><input type="color" name="colors.textLink" value="<%= colors.textLink || '#83C5BE' %>"><span><%= colors.textLink || '#83C5BE' %></span></div></div>
+              <div class="color-item"><label>Bölüm Etiketi</label><div class="color-input-wrap"><input type="color" name="colors.sectionLabelColor" value="<%= colors.sectionLabelColor || '#83C5BE' %>"><span><%= colors.sectionLabelColor || '#83C5BE' %></span></div></div>
+              <div class="color-item"><label>Sayaç Rengi</label><div class="color-input-wrap"><input type="color" name="colors.counterColor" value="<%= colors.counterColor || '#83C5BE' %>"><span><%= colors.counterColor || '#83C5BE' %></span></div></div>
+            </div>
+            <h4 style="font-size:0.85rem;color:var(--sand);margin:20px 0 12px">Buton Renkleri</h4>
+            <div class="color-grid">
+              <div class="color-item"><label>Birincil Buton BG</label><div class="color-input-wrap"><input type="color" name="colors.btnPrimaryBg" value="<%= colors.btnPrimaryBg || '#E0A96D' %>"><span><%= colors.btnPrimaryBg || '#E0A96D' %></span></div></div>
+              <div class="color-item"><label>Birincil Buton Metin</label><div class="color-input-wrap"><input type="color" name="colors.btnPrimaryText" value="<%= colors.btnPrimaryText || '#1B263B' %>"><span><%= colors.btnPrimaryText || '#1B263B' %></span></div></div>
+              <div class="color-item"><label>İkincil Buton Metin</label><div class="color-input-wrap"><input type="color" name="colors.btnSecondaryText" value="<%= colors.btnSecondaryText || '#83C5BE' %>"><span><%= colors.btnSecondaryText || '#83C5BE' %></span></div></div>
+              <div class="color-item"><label>İkincil Buton Çerçeve</label><div class="color-input-wrap"><input type="color" name="colors.btnSecondaryBorder" value="<%= colors.btnSecondaryBorder || '#83C5BE' %>"><span><%= colors.btnSecondaryBorder || '#83C5BE' %></span></div></div>
+            </div>
+          </div>
+
+          <!-- TYPOGRAPHY -->
+          <div class="form-section" style="border-left:3px solid #4F6D7A">
+            <h3>📐 Tipografi Ayarları</h3>
+            <div class="form-row" style="grid-template-columns:1fr 1fr 1fr">
+              <div class="form-group"><label>Temel Font Boyutu (px)</label><input type="number" name="typography.baseFontSize" value="<%= typo.baseFontSize || '16' %>" min="12" max="24"></div>
+              <div class="form-group"><label>H1 Boyut (rem)</label><input type="number" name="typography.h1Size" value="<%= typo.h1Size || '3.5' %>" step="0.1" min="1" max="6"></div>
+              <div class="form-group"><label>H2 Boyut (rem)</label><input type="number" name="typography.h2Size" value="<%= typo.h2Size || '2.8' %>" step="0.1" min="1" max="5"></div>
+            </div>
+            <div class="form-row" style="grid-template-columns:1fr 1fr 1fr">
+              <div class="form-group"><label>Satır Yüksekliği</label><input type="number" name="typography.lineHeight" value="<%= typo.lineHeight || '1.6' %>" step="0.1" min="1" max="3"></div>
+              <div class="form-group"><label>Başlık Satır Yüksekliği</label><input type="number" name="typography.headingLineHeight" value="<%= typo.headingLineHeight || '1.1' %>" step="0.05" min="0.8" max="2"></div>
+              <div class="form-group"><label>Nav Font Boyut (rem)</label><input type="number" name="typography.navFontSize" value="<%= typo.navFontSize || '0.9' %>" step="0.05" min="0.7" max="1.5"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Başlık Dönüşümü</label><select name="typography.headingTransform"><option value="uppercase" <%= typo.headingTransform==='uppercase'?'selected':'' %>>BÜYÜK HARF</option><option value="capitalize" <%= typo.headingTransform==='capitalize'?'selected':'' %>>İlk Harf Büyük</option><option value="none" <%= typo.headingTransform==='none'?'selected':'' %>>Normal</option></select></div>
+              <div class="form-group"><label>Etiket Harf Aralığı (px)</label><input type="number" name="typography.labelLetterSpacing" value="<%= typo.labelLetterSpacing || '3' %>" min="0" max="10"></div>
+            </div>
+          </div>
+
+          <!-- SPACING -->
+          <div class="form-section">
+            <h3>📏 Boşluk ve Düzen</h3>
+            <div class="form-row" style="grid-template-columns:1fr 1fr 1fr">
+              <div class="form-group"><label>Container Genişlik (px)</label><input type="number" name="spacing.containerMaxWidth" value="<%= spacing.containerMaxWidth || '1200' %>" min="900" max="1600" step="50"></div>
+              <div class="form-group"><label>Bölüm Padding Y (px)</label><input type="number" name="spacing.sectionPaddingY" value="<%= spacing.sectionPaddingY || '100' %>" min="40" max="200" step="10"></div>
+              <div class="form-group"><label>Kart Padding (px)</label><input type="number" name="spacing.cardPadding" value="<%= spacing.cardPadding || '36' %>" min="16" max="60"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Grid Gap (px)</label><input type="number" name="spacing.gap" value="<%= spacing.gap || '24' %>" min="8" max="48"></div>
+              <div class="form-group"><label>Navbar Yükseklik (px)</label><input type="number" name="spacing.navbarHeight" value="<%= spacing.navbarHeight || '70' %>" min="50" max="100"></div>
+            </div>
+          </div>
+
+          <!-- BORDERS -->
+          <div class="form-section">
+            <h3>🔲 Köşe Yuvarlaklığı</h3>
+            <div class="form-row" style="grid-template-columns:1fr 1fr 1fr 1fr">
+              <div class="form-group"><label>Küçük (px)</label><input type="range" name="borders.radiusSmall" value="<%= borders.radiusSmall || '8' %>" min="0" max="24" class="range-input"><span class="range-value"><%= borders.radiusSmall || '8' %>px</span></div>
+              <div class="form-group"><label>Orta (px)</label><input type="range" name="borders.radiusMedium" value="<%= borders.radiusMedium || '12' %>" min="0" max="32" class="range-input"><span class="range-value"><%= borders.radiusMedium || '12' %>px</span></div>
+              <div class="form-group"><label>Büyük (px)</label><input type="range" name="borders.radiusLarge" value="<%= borders.radiusLarge || '20' %>" min="0" max="40" class="range-input"><span class="range-value"><%= borders.radiusLarge || '20' %>px</span></div>
+              <div class="form-group"><label>Buton (px)</label><input type="range" name="borders.radiusButton" value="<%= borders.radiusButton || '50' %>" min="0" max="50" class="range-input"><span class="range-value"><%= borders.radiusButton || '50' %>px</span></div>
+            </div>
+          </div>
+
+          <!-- EFFECTS -->
+          <div class="form-section">
+            <h3>✨ Efektler ve Animasyonlar</h3>
+            <div class="form-row" style="grid-template-columns:1fr 1fr 1fr">
+              <div class="form-group"><label>Geçiş Hızı (sn)</label><input type="number" name="effects.transitionSpeed" value="<%= effects.transitionSpeed || '0.3' %>" step="0.05" min="0.1" max="1"></div>
+              <div class="form-group"><label>Hover Büyütme</label><input type="number" name="effects.hoverScale" value="<%= effects.hoverScale || '1.05' %>" step="0.01" min="1" max="1.2"></div>
+              <div class="form-group"><label>Kart Hover Kaldırma (px)</label><input type="number" name="effects.cardHoverLift" value="<%= effects.cardHoverLift || '6' %>" min="0" max="20"></div>
+            </div>
+            <div class="form-row" style="grid-template-columns:1fr 1fr 1fr">
+              <div class="form-group"><label>Gölge Yoğunluğu</label><input type="range" name="effects.shadowIntensity" value="<%= (parseFloat(effects.shadowIntensity)||0.3)*100 %>" min="0" max="100" class="range-input" data-divide="100"><span class="range-value"><%= effects.shadowIntensity || '0.3' %></span></div>
+              <div class="form-group"><label>Cam Bulanıklık (px)</label><input type="number" name="effects.glassBlur" value="<%= effects.glassBlur || '20' %>" min="0" max="40"></div>
+              <div class="form-group"><label>Gradient Açısı (°)</label><input type="number" name="effects.gradientAngle" value="<%= effects.gradientAngle || '135' %>" min="0" max="360"></div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-save">💾 Tasarımı Kaydet</button>
         </form>
       <% } %>
 

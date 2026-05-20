@@ -28,21 +28,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Parse form data into nested object
       for (const [key, value] of formData.entries()) {
-        const match = key.match(/^(\w+)\[(\d+)\]\.?(\w*)$/);
-        if (match) {
-          const [, arrayName, index, field] = match;
-          if (!data[arrayName]) data[arrayName] = [];
-          if (!data[arrayName][parseInt(index)]) data[arrayName][parseInt(index)] = {};
-          if (field) {
-            data[arrayName][parseInt(index)][field] = value;
+        // Handle dot notation: fonts.heading, colors.primary etc.
+        if (key.includes('.') && !key.includes('[')) {
+          const parts = key.split('.');
+          if (!data[parts[0]]) data[parts[0]] = {};
+          data[parts[0]][parts[1]] = value;
+        }
+        // Handle array notation: items[0].title
+        else {
+          const match = key.match(/^(\w+)\[(\d+)\]\.?(\w*)$/);
+          if (match) {
+            const [, arrayName, index, field] = match;
+            if (!data[arrayName]) data[arrayName] = [];
+            if (!data[arrayName][parseInt(index)]) data[arrayName][parseInt(index)] = {};
+            if (field) {
+              data[arrayName][parseInt(index)][field] = value;
+            } else {
+              data[arrayName][parseInt(index)] = value;
+            }
+          } else if (key.startsWith('social_')) {
+            if (!data.socialMedia) data.socialMedia = {};
+            data.socialMedia[key.replace('social_', '')] = value;
           } else {
-            data[arrayName][parseInt(index)] = value;
+            data[key] = value;
           }
-        } else if (key.startsWith('social_')) {
-          if (!data.socialMedia) data.socialMedia = {};
-          data.socialMedia[key.replace('social_', '')] = value;
-        } else {
-          data[key] = value;
         }
       }
 
@@ -162,4 +171,48 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // --- Design System: Color Hex Update ---
+  document.querySelectorAll('input[type="color"]').forEach(input => {
+    input.addEventListener('input', () => {
+      const span = input.parentElement.querySelector('span');
+      if (span) span.textContent = input.value.toUpperCase();
+    });
+  });
+
+  // --- Design System: Font Preview ---
+  document.querySelectorAll('.font-select').forEach(select => {
+    const previewId = select.dataset.preview;
+    const preview = document.getElementById(previewId);
+    if (preview) {
+      // Initial
+      preview.style.fontFamily = `'${select.value}', sans-serif`;
+      // Load font dynamically
+      const loadFont = (fontName) => {
+        const link = document.createElement('link');
+        link.href = `https://fonts.googleapis.com/css2?family=${fontName.replace(/ /g, '+')}:wght@400;700&display=swap`;
+        link.rel = 'stylesheet';
+        document.head.appendChild(link);
+      };
+      loadFont(select.value);
+      select.addEventListener('change', () => {
+        loadFont(select.value);
+        setTimeout(() => {
+          preview.style.fontFamily = `'${select.value}', sans-serif`;
+        }, 300);
+      });
+    }
+  });
+
+  // --- Design System: Range Slider Value ---
+  document.querySelectorAll('.range-input').forEach(input => {
+    const valueSpan = input.nextElementSibling;
+    if (valueSpan && valueSpan.classList.contains('range-value')) {
+      input.addEventListener('input', () => {
+        const divide = input.dataset.divide;
+        const val = divide ? (parseFloat(input.value) / parseFloat(divide)).toFixed(2) : input.value;
+        valueSpan.textContent = divide ? val : val + 'px';
+      });
+    }
+  });
 });

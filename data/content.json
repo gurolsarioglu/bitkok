@@ -145,5 +145,76 @@
       { "label": "Danışmanlık", "href": "#" }
     ],
     "copyright": "© 2026 Bitkok Tech-Agriculture Solutions. Tüm hakları saklıdır."
+  },
+  "design": {
+    "fonts": {
+      "heading": "Playfair Display",
+      "body": "Inter",
+      "logo": "Montserrat",
+      "headingWeight": "700",
+      "bodyWeight": "400",
+      "logoWeight": "700"
+    },
+    "colors": {
+      "primary": "#1B263B",
+      "secondary": "#4F6D7A",
+      "accent": "#83C5BE",
+      "highlight": "#E0A96D",
+      "primaryDark": "#0F1A2B",
+      "textHeading": "#FFFFFF",
+      "textBody": "rgba(255,255,255,0.8)",
+      "textMuted": "rgba(255,255,255,0.6)",
+      "textLink": "#83C5BE",
+      "bgMain": "#1B263B",
+      "bgDark": "#0F1A2B",
+      "bgCard": "rgba(255,255,255,0.03)",
+      "bgCardHover": "rgba(255,255,255,0.06)",
+      "borderColor": "rgba(255,255,255,0.1)",
+      "btnPrimaryBg": "#E0A96D",
+      "btnPrimaryText": "#1B263B",
+      "btnSecondaryBg": "transparent",
+      "btnSecondaryText": "#83C5BE",
+      "btnSecondaryBorder": "#83C5BE",
+      "sectionLabelColor": "#83C5BE",
+      "counterColor": "#83C5BE",
+      "footerBg": "#0F1A2B"
+    },
+    "typography": {
+      "baseFontSize": "16",
+      "h1Size": "3.5",
+      "h2Size": "2.8",
+      "h3Size": "1.2",
+      "bodySize": "1",
+      "lineHeight": "1.6",
+      "headingLineHeight": "1.1",
+      "letterSpacing": "0",
+      "headingLetterSpacing": "1",
+      "headingTransform": "uppercase",
+      "navFontSize": "0.9",
+      "labelLetterSpacing": "3"
+    },
+    "spacing": {
+      "containerMaxWidth": "1200",
+      "sectionPaddingY": "100",
+      "cardPadding": "36",
+      "gap": "24",
+      "navbarHeight": "70"
+    },
+    "borders": {
+      "radiusSmall": "8",
+      "radiusMedium": "12",
+      "radiusLarge": "20",
+      "radiusButton": "50",
+      "cardBorderWidth": "1"
+    },
+    "effects": {
+      "transitionSpeed": "0.3",
+      "hoverScale": "1.05",
+      "cardHoverLift": "6",
+      "shadowIntensity": "0.3",
+      "glassBlur": "20",
+      "glassOpacity": "0.92",
+      "gradientAngle": "135"
+    }
   }
 }
