@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const fs = require('fs');
 const path = require('path');
 const config = require('../config/config');
+const Jimp = require('jimp');
 
 /* =============================================
    BRUTE-FORCE KORUMASI
@@ -126,14 +127,56 @@ exports.updateSection = (req, res) => {
   }
 };
 
-/** Görsel yükleme */
-exports.uploadImage = (req, res) => {
+/** Görsel yükleme (Logo için arka plan temizleme ile) */
+exports.uploadImage = async (req, res) => {
   if (!req.file) {
     return res.status(400).json({ success: false, error: 'Dosya yüklenemedi' });
   }
   const category = req.params.category;
-  const filePath = `/uploads/${category}/${req.file.filename}`;
-  res.json({ success: true, path: filePath });
+  let filePath = `/uploads/${category}/${req.file.filename}`;
+
+  try {
+    if (category === 'logo') {
+      const fullPath = req.file.path;
+      // Sadece resim dosyaları için Jimp işle
+      if (req.file.mimetype.startsWith('image/') && req.file.mimetype !== 'image/svg+xml') {
+        const image = await Jimp.read(fullPath);
+        let needsProcessing = false;
+
+        // Toleranslı beyaz arka plan temizliği
+        image.scan(0, 0, image.bitmap.width, image.bitmap.height, function(x, y, idx) {
+          const red = this.bitmap.data[idx + 0];
+          const green = this.bitmap.data[idx + 1];
+          const blue = this.bitmap.data[idx + 2];
+          const alpha = this.bitmap.data[idx + 3];
+
+          // Beyaz veya beyaza çok yakın olan ve transparan olmayan pikselleri transparan yap
+          if (alpha > 0 && red > 230 && green > 230 && blue > 230) {
+            this.bitmap.data[idx + 3] = 0; // Transparan
+            needsProcessing = true;
+          }
+        });
+
+        // Eğer işlem yapıldıysa veya JPG ise, her zaman PNG olarak kaydet
+        if (needsProcessing || req.file.mimetype === 'image/jpeg') {
+           const newFilename = req.file.filename.replace(/\.[^/.]+$/, "") + ".png";
+           const newFullPath = path.join(path.dirname(fullPath), newFilename);
+           await image.writeAsync(newFullPath);
+           
+           if (fullPath !== newFullPath) {
+             fs.unlinkSync(fullPath);
+           }
+           filePath = `/uploads/${category}/${newFilename}`;
+        }
+      }
+    }
+    
+    res.json({ success: true, path: filePath });
+  } catch (err) {
+    console.error("Görsel işleme hatası:", err);
+    // Hata olsa bile normal dosyayı döndür
+    res.json({ success: true, path: filePath });
+  }
 };
 
 /** Tüm content.json'u kaydet (toplu güncelleme) */

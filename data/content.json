@@ -3,21 +3,37 @@
     "siteName": "bitkok",
     "siteDomain": ".com",
     "siteTagline": "Tech-Agriculture Solutions",
-    "logo": "/uploads/logo/bitkok-icon.svg",
+    "logo": "/uploads/logo/logo-1779287186859.png",
     "metaDescription": "Bitkok - Gelenek ve inovasyon tarımda buluşuyor. Organik tarımı uzman IT çözümleriyle güçlendiriyoruz.",
     "socialMedia": {
       "linkedin": "#",
       "instagram": "#",
       "twitter": "#"
-    }
+    },
+    "image": "/uploads/logo/logo-1779287186856.png"
   },
   "navbar": {
     "links": [
-      { "label": "Çözümlerimiz", "href": "#solutions" },
-      { "label": "Hikayemiz", "href": "#story" },
-      { "label": "Araştırma", "href": "#research" },
-      { "label": "Blog", "href": "#blog" },
-      { "label": "İletişim", "href": "#contact" }
+      {
+        "label": "Çözümlerimiz",
+        "href": "#solutions"
+      },
+      {
+        "label": "Hikayemiz",
+        "href": "#story"
+      },
+      {
+        "label": "Araştırma",
+        "href": "#research"
+      },
+      {
+        "label": "Blog",
+        "href": "#blog"
+      },
+      {
+        "label": "İletişim",
+        "href": "#contact"
+      }
     ]
   },
   "hero": {
@@ -30,10 +46,22 @@
     "ctaText": "TEKNOLOJİMİZİ KEŞFEDİN",
     "ctaLink": "#solutions",
     "infoItems": [
-      { "icon": "irrigation", "label": "Akıllı Sulama" },
-      { "icon": "pest", "label": "Zararlı Tespit" },
-      { "icon": "analytics", "label": "Veri Analizi" },
-      { "icon": "soil", "label": "Toprak Sağlığı" }
+      {
+        "icon": "irrigation",
+        "label": "Akıllı Sulama"
+      },
+      {
+        "icon": "pest",
+        "label": "Zararlı Tespit"
+      },
+      {
+        "icon": "analytics",
+        "label": "Veri Analizi"
+      },
+      {
+        "icon": "soil",
+        "label": "Toprak Sağlığı"
+      }
     ]
   },
   "solutions": {
@@ -71,9 +99,18 @@
       "Geleneksel bilgiyi yapay zeka, IoT ve veri analitiği ile harmanlayarak çiftçilerimize sürdürülebilir, verimli ve akıllı tarım çözümleri sunuyoruz."
     ],
     "stats": [
-      { "number": 15, "label": "Yıl Deneyim" },
-      { "number": 500, "label": "Aktif Çiftlik" },
-      { "number": 12, "label": "Ülke" }
+      {
+        "number": 15,
+        "label": "Yıl Deneyim"
+      },
+      {
+        "number": 500,
+        "label": "Aktif Çiftlik"
+      },
+      {
+        "number": 12,
+        "label": "Ülke"
+      }
     ],
     "image": "/uploads/story/story-image.png",
     "imageAlt": "Ege zeytin bahçesi"
@@ -83,10 +120,26 @@
     "title": "Yol Haritamız",
     "description": "Kuruluşumuzdan bugüne, inovasyonla dolu yolculuğumuz.",
     "milestones": [
-      { "year": "2010", "title": "Kuruluş", "desc": "Ege bölgesinde küçük bir tarım teknolojisi girişimi olarak faaliyetlerimize başladık." },
-      { "year": "2015", "title": "IoT Entegrasyonu", "desc": "İlk akıllı sulama sensörlerimizi geliştirerek tarla testlerine başladık." },
-      { "year": "2020", "title": "Yapay Zeka Dönemi", "desc": "Zararlı tespit ve hasat optimizasyonu için AI modellerimizi devreye aldık." },
-      { "year": "2025", "title": "Global Genişleme", "desc": "12 ülkede 500'den fazla çiftliğe teknoloji çözümleri sunmaya başladık." }
+      {
+        "year": "2010",
+        "title": "Kuruluş",
+        "desc": "Ege bölgesinde küçük bir tarım teknolojisi girişimi olarak faaliyetlerimize başladık."
+      },
+      {
+        "year": "2015",
+        "title": "IoT Entegrasyonu",
+        "desc": "İlk akıllı sulama sensörlerimizi geliştirerek tarla testlerine başladık."
+      },
+      {
+        "year": "2020",
+        "title": "Yapay Zeka Dönemi",
+        "desc": "Zararlı tespit ve hasat optimizasyonu için AI modellerimizi devreye aldık."
+      },
+      {
+        "year": "2025",
+        "title": "Global Genişleme",
+        "desc": "12 ülkede 500'den fazla çiftliğe teknoloji çözümleri sunmaya başladık."
+      }
     ]
   },
   "blog": {
@@ -125,24 +178,60 @@
     "title": "Bizimle İletişime Geçin",
     "description": "Projeleriniz için bizimle iletişime geçin. Size en uygun çözümü birlikte bulalım.",
     "details": [
-      { "icon": "location", "label": "Adres", "value": "Ege Bölgesi, Türkiye" },
-      { "icon": "phone", "label": "Telefon", "value": "+90 (232) 000 00 00" },
-      { "icon": "email", "label": "E-posta", "value": "info@bitkok.com" }
+      {
+        "icon": "location",
+        "label": "Adres",
+        "value": "Ege Bölgesi, Türkiye"
+      },
+      {
+        "icon": "phone",
+        "label": "Telefon",
+        "value": "+90 (232) 000 00 00"
+      },
+      {
+        "icon": "email",
+        "label": "E-posta",
+        "value": "info@bitkok.com"
+      }
     ]
   },
   "footer": {
     "description": "Gelenek ve teknolojiyi birleştirerek tarımın geleceğini inşa ediyoruz.",
     "quickLinks": [
-      { "label": "Çözümlerimiz", "href": "#solutions" },
-      { "label": "Hikayemiz", "href": "#story" },
-      { "label": "Araştırma", "href": "#research" },
-      { "label": "Blog", "href": "#blog" }
+      {
+        "label": "Çözümlerimiz",
+        "href": "#solutions"
+      },
+      {
+        "label": "Hikayemiz",
+        "href": "#story"
+      },
+      {
+        "label": "Araştırma",
+        "href": "#research"
+      },
+      {
+        "label": "Blog",
+        "href": "#blog"
+      }
     ],
     "services": [
-      { "label": "Akıllı Sulama", "href": "#" },
-      { "label": "Zararlı Analizi", "href": "#" },
-      { "label": "Toprak İzleme", "href": "#" },
-      { "label": "Danışmanlık", "href": "#" }
+      {
+        "label": "Akıllı Sulama",
+        "href": "#"
+      },
+      {
+        "label": "Zararlı Analizi",
+        "href": "#"
+      },
+      {
+        "label": "Toprak İzleme",
+        "href": "#"
+      },
+      {
+        "label": "Danışmanlık",
+        "href": "#"
+      }
     ],
     "copyright": "© 2026 Bitkok Tech-Agriculture Solutions. Tüm hakları saklıdır."
   },
