@@ -1,0 +1,16 @@
+BITKOK Renk Kodlari
+
+Deep Navy
+HEX: #0F2D4D
+RGB: 15, 45, 77
+CMYK yaklasik: 81, 42, 0, 70
+
+Fresh Green
+HEX: #6BA23D
+RGB: 107, 162, 61
+CMYK yaklasik: 34, 0, 62, 36
+
+Beyaz: #FFFFFF
+Siyah: #000000
+
+Matbaa notu: CMYK degerleri yaklasiktir. Kritik baskilarda matbaa/prova uzerinden renk kontrolu yaptirin.

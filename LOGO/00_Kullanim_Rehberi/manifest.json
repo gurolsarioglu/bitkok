@@ -1,0 +1,350 @@
+[
+  {
+    "path": "00_Kullanim_Rehberi/BITKOK_Marka_Kilavuzu.pdf",
+    "bytes": 42711
+  },
+  {
+    "path": "00_Kullanim_Rehberi/BITKOK_Marka_Kilavuzu.svg",
+    "bytes": 39789
+  },
+  {
+    "path": "00_Kullanim_Rehberi/BITKOK_Marka_Kilavuzu_preview.png",
+    "bytes": 166920
+  },
+  {
+    "path": "00_Kullanim_Rehberi/Dosya_Manifestosu.txt",
+    "bytes": 4964
+  },
+  {
+    "path": "00_Kullanim_Rehberi/Kullanim_Notlari.txt",
+    "bytes": 506
+  },
+  {
+    "path": "00_Kullanim_Rehberi/Renk_Kodlari.txt",
+    "bytes": 299
+  },
+  {
+    "path": "00_Kullanim_Rehberi/manifest.json",
+    "bytes": 7478
+  },
+  {
+    "path": "01_Web_Sitesi/Favicon/favicon.ico",
+    "bytes": 533
+  },
+  {
+    "path": "01_Web_Sitesi/Favicon/favicon_128x128.png",
+    "bytes": 7819
+  },
+  {
+    "path": "01_Web_Sitesi/Favicon/favicon_16x16.png",
+    "bytes": 529
+  },
+  {
+    "path": "01_Web_Sitesi/Favicon/favicon_32x32.png",
+    "bytes": 1416
+  },
+  {
+    "path": "01_Web_Sitesi/Favicon/favicon_64x64.png",
+    "bytes": 3619
+  },
+  {
+    "path": "01_Web_Sitesi/PNG/BITKOK_horizontal_1200.png",
+    "bytes": 49702
+  },
+  {
+    "path": "01_Web_Sitesi/PNG/BITKOK_horizontal_1600.png",
+    "bytes": 67233
+  },
+  {
+    "path": "01_Web_Sitesi/PNG/BITKOK_horizontal_600.png",
+    "bytes": 24736
+  },
+  {
+    "path": "01_Web_Sitesi/PNG/BITKOK_horizontal_white_1200.png",
+    "bytes": 36146
+  },
+  {
+    "path": "01_Web_Sitesi/PNG/BITKOK_icon_192.png",
+    "bytes": 14933
+  },
+  {
+    "path": "01_Web_Sitesi/PNG/BITKOK_icon_256.png",
+    "bytes": 20091
+  },
+  {
+    "path": "01_Web_Sitesi/PNG/BITKOK_icon_512.png",
+    "bytes": 40162
+  },
+  {
+    "path": "01_Web_Sitesi/PNG/BITKOK_primary_1200.png",
+    "bytes": 95315
+  },
+  {
+    "path": "01_Web_Sitesi/PNG/BITKOK_primary_300.png",
+    "bytes": 23133
+  },
+  {
+    "path": "01_Web_Sitesi/PNG/BITKOK_primary_600.png",
+    "bytes": 46894
+  },
+  {
+    "path": "01_Web_Sitesi/SVG/BITKOK_web_horizontal_color.svg",
+    "bytes": 8369
+  },
+  {
+    "path": "01_Web_Sitesi/SVG/BITKOK_web_horizontal_white.svg",
+    "bytes": 8369
+  },
+  {
+    "path": "01_Web_Sitesi/SVG/BITKOK_web_icon_color.svg",
+    "bytes": 3161
+  },
+  {
+    "path": "01_Web_Sitesi/SVG/BITKOK_web_icon_white.svg",
+    "bytes": 3161
+  },
+  {
+    "path": "01_Web_Sitesi/SVG/BITKOK_web_primary_color.svg",
+    "bytes": 8761
+  },
+  {
+    "path": "02_Kartvizit/Baski_Notlari.txt",
+    "bytes": 299
+  },
+  {
+    "path": "02_Kartvizit/PDF/Kartvizit_2_sayfa_on_arka.pdf",
+    "bytes": 20278
+  },
+  {
+    "path": "02_Kartvizit/PDF/Kartvizit_arka_yuz_85x55mm_3mm_bleed.pdf",
+    "bytes": 15259
+  },
+  {
+    "path": "02_Kartvizit/PDF/Kartvizit_on_yuz_85x55mm_3mm_bleed.pdf",
+    "bytes": 6057
+  },
+  {
+    "path": "02_Kartvizit/PNG_Onizleme/Kartvizit_arka_yuz_preview.png",
+    "bytes": 83297
+  },
+  {
+    "path": "02_Kartvizit/PNG_Onizleme/Kartvizit_on_yuz_preview.png",
+    "bytes": 60481
+  },
+  {
+    "path": "02_Kartvizit/SVG/Kartvizit_arka_yuz_85x55mm_3mm_bleed.svg",
+    "bytes": 9193
+  },
+  {
+    "path": "02_Kartvizit/SVG/Kartvizit_on_yuz_85x55mm_3mm_bleed.svg",
+    "bytes": 8471
+  },
+  {
+    "path": "03_Matbaa_Baski/EPS/BITKOK_logo_horizontal_black.eps",
+    "bytes": 18177
+  },
+  {
+    "path": "03_Matbaa_Baski/EPS/BITKOK_logo_horizontal_color.eps",
+    "bytes": 18234
+  },
+  {
+    "path": "03_Matbaa_Baski/EPS/BITKOK_logo_icon_black.eps",
+    "bytes": 6967
+  },
+  {
+    "path": "03_Matbaa_Baski/EPS/BITKOK_logo_icon_color.eps",
+    "bytes": 7024
+  },
+  {
+    "path": "03_Matbaa_Baski/EPS/BITKOK_logo_primary_color.eps",
+    "bytes": 14917
+  },
+  {
+    "path": "03_Matbaa_Baski/EPS/BITKOK_logo_primary_onecolor_navy.eps",
+    "bytes": 14887
+  },
+  {
+    "path": "03_Matbaa_Baski/PDF/BITKOK_logo_horizontal_black.pdf",
+    "bytes": 6488
+  },
+  {
+    "path": "03_Matbaa_Baski/PDF/BITKOK_logo_horizontal_color.pdf",
+    "bytes": 6520
+  },
+  {
+    "path": "03_Matbaa_Baski/PDF/BITKOK_logo_icon_black.pdf",
+    "bytes": 2573
+  },
+  {
+    "path": "03_Matbaa_Baski/PDF/BITKOK_logo_icon_color.pdf",
+    "bytes": 2608
+  },
+  {
+    "path": "03_Matbaa_Baski/PDF/BITKOK_logo_primary_color.pdf",
+    "bytes": 4985
+  },
+  {
+    "path": "03_Matbaa_Baski/PDF/BITKOK_logo_primary_onecolor_navy.pdf",
+    "bytes": 4969
+  },
+  {
+    "path": "03_Matbaa_Baski/PNG_300dpi/BITKOK_horizontal_3000w_transparent.png",
+    "bytes": 130950
+  },
+  {
+    "path": "03_Matbaa_Baski/PNG_300dpi/BITKOK_icon_2000w_transparent.png",
+    "bytes": 176151
+  },
+  {
+    "path": "03_Matbaa_Baski/PNG_300dpi/BITKOK_icon_black_2000w_transparent.png",
+    "bytes": 128198
+  },
+  {
+    "path": "03_Matbaa_Baski/PNG_300dpi/BITKOK_primary_3000w_transparent.png",
+    "bytes": 264182
+  },
+  {
+    "path": "03_Matbaa_Baski/PNG_300dpi/BITKOK_primary_black_3000w_transparent.png",
+    "bytes": 191382
+  },
+  {
+    "path": "03_Matbaa_Baski/SVG/BITKOK_logo_horizontal_black.svg",
+    "bytes": 8369
+  },
+  {
+    "path": "03_Matbaa_Baski/SVG/BITKOK_logo_horizontal_color.svg",
+    "bytes": 8369
+  },
+  {
+    "path": "03_Matbaa_Baski/SVG/BITKOK_logo_horizontal_onecolor_navy.svg",
+    "bytes": 8369
+  },
+  {
+    "path": "03_Matbaa_Baski/SVG/BITKOK_logo_horizontal_white.svg",
+    "bytes": 8369
+  },
+  {
+    "path": "03_Matbaa_Baski/SVG/BITKOK_logo_icon_black.svg",
+    "bytes": 3161
+  },
+  {
+    "path": "03_Matbaa_Baski/SVG/BITKOK_logo_icon_color.svg",
+    "bytes": 3161
+  },
+  {
+    "path": "03_Matbaa_Baski/SVG/BITKOK_logo_icon_onecolor_navy.svg",
+    "bytes": 3161
+  },
+  {
+    "path": "03_Matbaa_Baski/SVG/BITKOK_logo_icon_white.svg",
+    "bytes": 3161
+  },
+  {
+    "path": "03_Matbaa_Baski/SVG/BITKOK_logo_primary_black.svg",
+    "bytes": 8761
+  },
+  {
+    "path": "03_Matbaa_Baski/SVG/BITKOK_logo_primary_color.svg",
+    "bytes": 8761
+  },
+  {
+    "path": "03_Matbaa_Baski/SVG/BITKOK_logo_primary_onecolor_navy.svg",
+    "bytes": 8761
+  },
+  {
+    "path": "03_Matbaa_Baski/SVG/BITKOK_logo_primary_white.svg",
+    "bytes": 8761
+  },
+  {
+    "path": "04_Hediyelik_Promosyon/Kullanim_Notu.txt",
+    "bytes": 348
+  },
+  {
+    "path": "04_Hediyelik_Promosyon/PNG/Promosyon_bardak_preview.png",
+    "bytes": 59399
+  },
+  {
+    "path": "04_Hediyelik_Promosyon/PNG/Promosyon_kalem_preview.png",
+    "bytes": 26962
+  },
+  {
+    "path": "04_Hediyelik_Promosyon/PNG/Promosyon_lazer_icon_black_1000.png",
+    "bytes": 56744
+  },
+  {
+    "path": "04_Hediyelik_Promosyon/PNG/Promosyon_nakis_icon_navy_1000.png",
+    "bytes": 79927
+  },
+  {
+    "path": "04_Hediyelik_Promosyon/PNG/Promosyon_yuvarlak_etiket_preview.png",
+    "bytes": 155688
+  },
+  {
+    "path": "04_Hediyelik_Promosyon/SVG/Promosyon_bardak_yatay_renkli.svg",
+    "bytes": 8367
+  },
+  {
+    "path": "04_Hediyelik_Promosyon/SVG/Promosyon_kalem_tek_renk_lazer.svg",
+    "bytes": 8362
+  },
+  {
+    "path": "04_Hediyelik_Promosyon/SVG/Promosyon_lazer_kazima_icon_black.svg",
+    "bytes": 3161
+  },
+  {
+    "path": "04_Hediyelik_Promosyon/SVG/Promosyon_nakis_icon_navy.svg",
+    "bytes": 3161
+  },
+  {
+    "path": "04_Hediyelik_Promosyon/SVG/Promosyon_yuvarlak_etiket_renkli.svg",
+    "bytes": 8895
+  },
+  {
+    "path": "05_Sosyal_Medya/PNG/Kapak_1200x630.png",
+    "bytes": 41796
+  },
+  {
+    "path": "05_Sosyal_Medya/PNG/Logo_yatay_transparent_1600.png",
+    "bytes": 67233
+  },
+  {
+    "path": "05_Sosyal_Medya/PNG/Profil_1080x1080_icon.png",
+    "bytes": 52486
+  },
+  {
+    "path": "05_Sosyal_Medya/PNG/Profil_1080x1080_icon_navy_bg.png",
+    "bytes": 51959
+  },
+  {
+    "path": "05_Sosyal_Medya/PNG/Story_1080x1920.png",
+    "bytes": 74254
+  },
+  {
+    "path": "05_Sosyal_Medya/SVG/Kapak_1200x630.svg",
+    "bytes": 8478
+  },
+  {
+    "path": "05_Sosyal_Medya/SVG/Story_1080x1920.svg",
+    "bytes": 8634
+  },
+  {
+    "path": "06_Kaynak_ve_Onizleme/kurumsal_kimlik_onizleme.png",
+    "bytes": 1119457
+  },
+  {
+    "path": "06_Kaynak_ve_Onizleme/orijinal_logo_beyaz_arkaplan.png",
+    "bytes": 4182330
+  },
+  {
+    "path": "06_Kaynak_ve_Onizleme/orijinal_logo_seffaf_arkaplan.png",
+    "bytes": 557965
+  },
+  {
+    "path": "06_Kaynak_ve_Onizleme/vektorel_logo_onizleme.png",
+    "bytes": 95315
+  },
+  {
+    "path": "README.txt",
+    "bytes": 1155
+  }
+]

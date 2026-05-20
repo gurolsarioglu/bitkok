@@ -1,0 +1,8 @@
+Kurumsal Kullanim Notlari
+
+1) Logoyu orantili olceklendirin. Yatay veya dikey germeyin.
+2) Arka plan ile kontrast dusukse beyaz veya tek renk logo kullanin.
+3) Web icin SVG en net sonuc verir; PNG dosyalar transparenttir.
+4) Matbaa, tabela, folyo kesim, lazer kazima ve nakis icin SVG/EPS/PDF kullanin.
+5) Kartvizit dosyalari 85x55 mm bitmis olcu + 3 mm tasma payi ile hazirlandi.
+6) Kartvizitteki Ad Soyad, telefon, e-posta ve web alanlari placeholderdir; baski oncesi gercek bilgilerle degistirilmelidir.

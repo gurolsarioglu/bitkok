@@ -1,0 +1,8 @@
+Kartvizit Baski Notlari
+
+Bitmis olcu: 85 x 55 mm
+Dosya olcusu: 91 x 61 mm
+Tasma payi: her kenarda 3 mm
+
+PDF dosyalari baski icin hazir taslaktir. SVG dosyalarinda placeholder iletisim bilgileri duzenlenebilir.
+Matbaaya gondermeden once isim, unvan, telefon, e-posta ve web adreslerini kesinlestirin.

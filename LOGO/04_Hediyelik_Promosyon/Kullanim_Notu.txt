@@ -1,0 +1,6 @@
+Hediyelik / Promosyon Notlari
+
+- Lazer kazima, tampon baski ve folyo kesim icin tek renk SVG dosyalarini kullanin.
+- Bardak, sticker ve ambalaj uzerinde renkli yatay logo uygundur.
+- Nakis icin cok kucuk kullanımlarda tagline yerine icon-only versiyonu tercih edin.
+- Koyu zeminlerde white logo, acik zeminlerde color/navy logo tercih edilmelidir.
