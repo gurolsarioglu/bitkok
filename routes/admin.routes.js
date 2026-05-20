@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const adminCtrl = require('../controllers/admin.controller');
+const contactCtrl = require('../controllers/contact.controller');
 const { requireAuth } = require('../middleware/auth.middleware');
 const upload = require('../middleware/upload.middleware');
 
@@ -18,5 +19,11 @@ router.post('/api/section/:section', requireAuth, express.json(), adminCtrl.upda
 router.post('/api/save', requireAuth, express.json(), adminCtrl.saveAll);
 router.post('/api/upload/:category', requireAuth, upload.single('image'), adminCtrl.uploadImage);
 router.post('/api/change-password', requireAuth, express.json(), adminCtrl.changePassword);
+
+// Mesaj yönetimi API
+router.get('/api/messages', requireAuth, contactCtrl.getMessages);
+router.post('/api/messages/:id/read', requireAuth, contactCtrl.markRead);
+router.delete('/api/messages/:id', requireAuth, contactCtrl.deleteMessage);
+router.post('/api/test-email', requireAuth, contactCtrl.testEmail);
 
 module.exports = router;

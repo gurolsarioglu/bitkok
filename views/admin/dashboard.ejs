@@ -371,20 +371,99 @@
 
       <!-- CONTACT -->
       <% } else if (section === 'contact') { %>
-        <form class="edit-form" data-section="contact">
-          <div class="form-section">
-            <h3>Başlık</h3>
-            <div class="form-group"><label>Başlık</label><input type="text" name="title" value="<%= content.contact.title %>"></div>
-            <div class="form-group"><label>Açıklama</label><textarea name="description" rows="2"><%= content.contact.description %></textarea></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+          <!-- Sol Kolon: İletişim Bilgileri -->
+          <div>
+            <form class="edit-form" data-section="contact">
+              <div class="form-section">
+                <h3>📋 Bölüm Başlığı</h3>
+                <div class="form-group"><label>Etiket</label><input type="text" name="label" value="<%= content.contact.label %>"></div>
+                <div class="form-group"><label>Başlık</label><input type="text" name="title" value="<%= content.contact.title %>"></div>
+                <div class="form-group"><label>Açıklama</label><textarea name="description" rows="2"><%= content.contact.description %></textarea></div>
+              </div>
+              <% content.contact.details.forEach((d, i) => { %>
+                <div class="form-section card-edit">
+                  <h3><%= d.label %></h3>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Etiket</label>
+                      <input type="text" name="details[<%= i %>].label" value="<%= d.label %>">
+                    </div>
+                    <div class="form-group">
+                      <label>İkon</label>
+                      <select name="details[<%= i %>].icon">
+                        <option value="location" <%= d.icon==='location'?'selected':'' %>>📍 Konum</option>
+                        <option value="phone" <%= d.icon==='phone'?'selected':'' %>>📞 Telefon</option>
+                        <option value="email" <%= d.icon==='email'?'selected':'' %>>📧 E-posta</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group"><label>Değer</label><input type="text" name="details[<%= i %>].value" value="<%= d.value %>"></div>
+                </div>
+              <% }) %>
+              <button type="submit" class="btn-save">💾 İletişim Bilgilerini Kaydet</button>
+            </form>
+
+            <!-- E-posta Ayarları -->
+            <% const emailSettings = (content.contact && content.contact.emailSettings) || {}; %>
+            <form class="edit-form" data-section="contact" id="emailSettingsForm" style="margin-top:24px">
+              <div class="form-section" style="border-left:3px solid #E0A96D">
+                <h3>📧 E-posta Gönderim Ayarları (SMTP)</h3>
+                <p style="color:var(--white-60);font-size:0.82rem;margin-bottom:16px">İletişim formundan gelen mesajların e-postanıza ulaşması için SMTP ayarlarını yapılandırın. Gmail için: smtp.gmail.com / 587 / Uygulama Şifresi</p>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>SMTP Sunucu</label>
+                    <input type="text" name="emailSettings.smtpHost" value="<%= emailSettings.smtpHost || '' %>" placeholder="smtp.gmail.com">
+                  </div>
+                  <div class="form-group">
+                    <label>Port</label>
+                    <input type="text" name="emailSettings.smtpPort" value="<%= emailSettings.smtpPort || '587' %>" placeholder="587">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>SMTP Kullanıcı</label>
+                    <input type="text" name="emailSettings.smtpUser" value="<%= emailSettings.smtpUser || '' %>" placeholder="email@gmail.com">
+                  </div>
+                  <div class="form-group">
+                    <label>SMTP Şifre</label>
+                    <input type="password" name="emailSettings.smtpPass" value="<%= emailSettings.smtpPass || '' %>" placeholder="Uygulama şifresi">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Alıcı E-posta</label>
+                    <input type="email" name="emailSettings.recipientEmail" value="<%= emailSettings.recipientEmail || '' %>" placeholder="info@bitkok.com">
+                  </div>
+                  <div class="form-group">
+                    <label>Gönderen Adı</label>
+                    <input type="text" name="emailSettings.senderName" value="<%= emailSettings.senderName || 'Bitkok İletişim Formu' %>" placeholder="Bitkok İletişim Formu">
+                  </div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center">
+                  <button type="submit" class="btn-save">💾 SMTP Ayarlarını Kaydet</button>
+                  <button type="button" class="btn-save" id="testEmailBtn" style="background:var(--sprout);color:var(--navy)">📤 Test Maili Gönder</button>
+                </div>
+              </div>
+            </form>
           </div>
-          <% content.contact.details.forEach((d, i) => { %>
-            <div class="form-section card-edit">
-              <h3><%= d.label %></h3>
-              <div class="form-group"><label>Değer</label><input type="text" name="details[<%= i %>].value" value="<%= d.value %>"></div>
+
+          <!-- Sağ Kolon: Gelen Mesajlar -->
+          <div>
+            <div class="form-section" style="border-left:3px solid var(--sprout)">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+                <h3>📬 Gelen Mesajlar</h3>
+                <button class="btn-save" id="refreshMessages" style="padding:6px 16px;font-size:0.8rem">🔄 Yenile</button>
+              </div>
+              <div id="messagesContainer" style="display:flex;flex-direction:column;gap:12px;max-height:600px;overflow-y:auto">
+                <div style="text-align:center;color:var(--white-60);padding:40px 0">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" style="opacity:0.3;margin-bottom:12px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <p>Mesajlar yükleniyor...</p>
+                </div>
+              </div>
             </div>
-          <% }) %>
-          <button type="submit" class="btn-save">💾 Kaydet</button>
-        </form>
+          </div>
+        </div>
 
       <!-- DESIGN SYSTEM -->
       <% } else if (section === 'design') { %>

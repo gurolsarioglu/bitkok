@@ -279,4 +279,131 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // --- Contact Messages Management ---
+  const messagesContainer = document.getElementById('messagesContainer');
+  
+  async function loadMessages() {
+    if (!messagesContainer) return;
+    try {
+      const res = await fetch('/admin/api/messages');
+      const result = await res.json();
+      if (result.success) {
+        renderMessages(result.messages);
+      }
+    } catch (err) {
+      messagesContainer.innerHTML = '<p style="color:var(--white-60);text-align:center;padding:20px">Mesajlar yüklenemedi.</p>';
+    }
+  }
+
+  function renderMessages(messages) {
+    if (!messagesContainer) return;
+    if (messages.length === 0) {
+      messagesContainer.innerHTML = `
+        <div style="text-align:center;color:var(--white-60);padding:40px 0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" style="opacity:0.3;margin-bottom:12px"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg>
+          <p>Henüz mesaj yok</p>
+        </div>`;
+      return;
+    }
+
+    messagesContainer.innerHTML = messages.map(msg => `
+      <div class="message-card ${msg.read ? '' : 'unread'}" data-id="${msg.id}" style="
+        background:${msg.read ? 'rgba(255,255,255,0.02)' : 'rgba(131,197,190,0.08)'};
+        border:1px solid ${msg.read ? 'var(--white-10)' : 'rgba(131,197,190,0.3)'};
+        border-radius:10px;padding:16px;position:relative;cursor:pointer;
+        transition:all 0.2s ease;
+      ">
+        ${!msg.read ? '<div style="position:absolute;top:12px;right:12px;width:8px;height:8px;background:#83C5BE;border-radius:50%"></div>' : ''}
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+          <div>
+            <strong style="color:var(--white);font-size:0.95rem">${msg.name}</strong>
+            <span style="color:var(--sprout);font-size:0.8rem;margin-left:8px">${msg.email}</span>
+          </div>
+          <span style="color:var(--white-60);font-size:0.75rem;white-space:nowrap">${formatDate(msg.date)}</span>
+        </div>
+        <div style="color:var(--sand);font-size:0.85rem;font-weight:600;margin-bottom:6px">${msg.subject}</div>
+        <p style="color:var(--white-60);font-size:0.85rem;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">${msg.message}</p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          ${!msg.read ? `<button onclick="markMessageRead('${msg.id}')" style="padding:4px 12px;background:rgba(131,197,190,0.15);color:#83C5BE;border:1px solid rgba(131,197,190,0.3);border-radius:6px;cursor:pointer;font-size:0.75rem">✓ Okundu</button>` : ''}
+          <button onclick="deleteMessage('${msg.id}')" style="padding:4px 12px;background:rgba(231,76,60,0.1);color:#e74c3c;border:1px solid rgba(231,76,60,0.3);border-radius:6px;cursor:pointer;font-size:0.75rem">🗑 Sil</button>
+          <a href="mailto:${msg.email}?subject=Re: ${encodeURIComponent(msg.subject)}" style="padding:4px 12px;background:rgba(224,169,109,0.1);color:#E0A96D;border:1px solid rgba(224,169,109,0.3);border-radius:6px;font-size:0.75rem;text-decoration:none">↩ Yanıtla</a>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    const now = new Date();
+    const diffMs = now - d;
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMs / 3600000);
+    const diffDays = Math.floor(diffMs / 86400000);
+
+    if (diffMins < 1) return 'Az önce';
+    if (diffMins < 60) return `${diffMins} dk önce`;
+    if (diffHours < 24) return `${diffHours} saat önce`;
+    if (diffDays < 7) return `${diffDays} gün önce`;
+    return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
+  // Global functions for inline handlers
+  window.markMessageRead = async function(id) {
+    try {
+      await fetch(`/admin/api/messages/${id}/read`, { method: 'POST' });
+      showToast('✓ Mesaj okundu olarak işaretlendi', 'success');
+      loadMessages();
+    } catch (err) {
+      showToast('Hata oluştu', 'error');
+    }
+  };
+
+  window.deleteMessage = async function(id) {
+    if (!confirm('Bu mesajı silmek istediğinize emin misiniz?')) return;
+    try {
+      await fetch(`/admin/api/messages/${id}`, { method: 'DELETE' });
+      showToast('✓ Mesaj silindi', 'success');
+      loadMessages();
+    } catch (err) {
+      showToast('Hata oluştu', 'error');
+    }
+  };
+
+  // Refresh button
+  const refreshBtn = document.getElementById('refreshMessages');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+      loadMessages();
+      showToast('🔄 Mesajlar yenilendi', 'success');
+    });
+  }
+
+  // Test email button
+  const testEmailBtn = document.getElementById('testEmailBtn');
+  if (testEmailBtn) {
+    testEmailBtn.addEventListener('click', async () => {
+      testEmailBtn.disabled = true;
+      testEmailBtn.textContent = '📤 Gönderiliyor...';
+      try {
+        const res = await fetch('/admin/api/test-email', { method: 'POST' });
+        const result = await res.json();
+        if (result.success) {
+          showToast('✓ ' + result.message, 'success');
+        } else {
+          showToast('✗ ' + (result.error || 'Gönderilemedi'), 'error');
+        }
+      } catch (err) {
+        showToast('Bağlantı hatası!', 'error');
+      }
+      testEmailBtn.disabled = false;
+      testEmailBtn.textContent = '📤 Test Maili Gönder';
+    });
+  }
+
+  // Auto-load messages if on contact page
+  if (messagesContainer) {
+    loadMessages();
+  }
+
 });

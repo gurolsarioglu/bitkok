@@ -95,17 +95,59 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Contact Form ---
   const form = document.getElementById('contactForm');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.textContent;
-      btn.textContent = '✓ GÖNDERİLDİ!';
-      btn.style.background = '#83C5BE';
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        form.reset();
-      }, 2500);
+      btn.textContent = 'GÖNDERİLİYOR...';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+
+      const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
+
+      try {
+        const res = await fetch('/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+
+        if (result.success) {
+          btn.textContent = '✓ GÖNDERİLDİ!';
+          btn.style.background = '#83C5BE';
+          form.reset();
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.disabled = false;
+            btn.style.opacity = '1';
+          }, 3000);
+        } else {
+          btn.textContent = '✗ HATA!';
+          btn.style.background = '#e74c3c';
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.disabled = false;
+            btn.style.opacity = '1';
+          }, 2500);
+        }
+      } catch (err) {
+        btn.textContent = '✗ BAĞLANTI HATASI!';
+        btn.style.background = '#e74c3c';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '';
+          btn.disabled = false;
+          btn.style.opacity = '1';
+        }, 2500);
+      }
     });
   }
 

@@ -118,27 +118,27 @@
   "research": {
     "label": "Araştırma & İnovasyon",
     "title": "Yol Haritamız",
-    "description": "Kuruluşumuzdan bugüne, inovasyonla dolu yolculuğumuz.",
+    "description": "Doğa ile insan arasındaki bozulan ilişkiyi onarmak.",
     "milestones": [
       {
-        "year": "2010",
+        "year": "2026",
         "title": "Kuruluş",
-        "desc": "Ege bölgesinde küçük bir tarım teknolojisi girişimi olarak faaliyetlerimize başladık."
+        "desc": "Ege bölgesinde küçük bir tarım işletmesi olarak başladık."
       },
       {
-        "year": "2015",
-        "title": "IoT Entegrasyonu",
-        "desc": "İlk akıllı sulama sensörlerimizi geliştirerek tarla testlerine başladık."
+        "year": "2030",
+        "title": "Gelecek Hedef",
+        "desc": "Basit ve sade bir tarım üretimi düzeni kurmak"
       },
       {
-        "year": "2020",
-        "title": "Yapay Zeka Dönemi",
-        "desc": "Zararlı tespit ve hasat optimizasyonu için AI modellerimizi devreye aldık."
+        "year": "2035",
+        "title": "Yurt Dışına Açılmak",
+        "desc": "Ürünlerimizi Dünya ile tanıştırmak"
       },
       {
-        "year": "2025",
+        "year": "2040",
         "title": "Global Genişleme",
-        "desc": "12 ülkede 500'den fazla çiftliğe teknoloji çözümleri sunmaya başladık."
+        "desc": "12 ülkede 500'den fazla çiftliğe ulaşamak."
       }
     ]
   },
@@ -176,24 +176,32 @@
   "contact": {
     "label": "İletişim",
     "title": "Bizimle İletişime Geçin",
-    "description": "Projeleriniz için bizimle iletişime geçin. Size en uygun çözümü birlikte bulalım.",
+    "description": "Ürünlerimiz Hakkında Bilgi Almak için iletişime Geçin.",
     "details": [
       {
-        "icon": "location",
         "label": "Adres",
-        "value": "Ege Bölgesi, Türkiye"
+        "icon": "location",
+        "value": "Çatalca Mah. Menderes/ izmir Ege Bölgesi, Türkiye"
       },
       {
-        "icon": "phone",
         "label": "Telefon",
-        "value": "+90 (232) 000 00 00"
+        "icon": "phone",
+        "value": "+90 545 663 23 64"
       },
       {
-        "icon": "email",
         "label": "E-posta",
-        "value": "info@bitkok.com"
+        "icon": "email",
+        "value": "gurol.sarioglu@bitkok.com"
       }
-    ]
+    ],
+    "emailSettings": {
+      "smtpHost": "",
+      "smtpPort": "587",
+      "smtpUser": "",
+      "smtpPass": "",
+      "recipientEmail": "info@bitkok.com",
+      "senderName": "Bitkok İletişim Formu"
+    }
   },
   "footer": {
     "description": "Gelenek ve teknolojiyi birleştirerek tarımın geleceğini inşa ediyoruz.",
